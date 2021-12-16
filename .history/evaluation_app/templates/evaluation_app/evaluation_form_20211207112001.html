@@ -1,0 +1,110 @@
+{%extends 'base.html'%} {%load static%} {%block content%}
+<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
+  <div class="widget widget-card-two">
+    <div class="widget-content">
+      <div class="media">
+        <div class="w-img">
+          <img src=" {% static 'assets/img/90x90.jpg' %} " alt="avatar" />
+        </div>
+        <div class="media-body">
+          <h6>Artificial Intelligence (GSOT201)</h6>
+          <p class="meta-date-time">Department of Computer Science, SOT</p>
+        </div>
+      </div>
+
+      <div class="container">
+        lore ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </div>
+
+      <div class="card-bottom-section">
+        <h5>Lecturer: Johnson Kofi Mensah</h5>
+
+        <a
+          href=" {% static 'javascript:void(0);' %} "
+          class="btn"
+          data-toggle="modal"
+          data-target="#exampleModal"
+          >Evaluate Course</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
+  <div class="widget widget-card-two">
+    <div class="widget-content">
+      <div class="media">
+        <div class="w-img">
+          <img src=" {% static 'assets/img/90x90.jpg' %} " alt="avatar" />
+        </div>
+        <div class="media-body">
+          <h6>Artificial Intelligence (GSOT201)</h6>
+          <p class="meta-date-time">Department of Computer Science, SOT</p>
+        </div>
+      </div>
+
+      <div class="container">
+        lore ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </div>
+
+      <div class="card-bottom-section">
+        <h5>Lecturer: Johnson Kofi Mensah</h5>
+
+        <a
+          href=" {% static 'javascript:void(0);' %} "
+          class="btn"
+          data-toggle="modal"
+          data-target="#exampleModal"
+          >Evaluate Course</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <svg>...</svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-text">
+          Mauris mi tellus, pharetra vel mattis sed, tempus ultrices eros.
+          Phasellus egestas sit amet velit sed luctus. Orci varius natoque
+          penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+          Suspendisse potenti. Vivamus ultrices sed urna ac pulvinar. Ut sit
+          amet ullamcorper mi.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal">
+          <i class="flaticon-cancel-12"></i> Discard
+        </button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{%endblock%}
