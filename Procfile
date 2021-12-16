@@ -1,0 +1,1 @@
+web: gunicorn gimpa_sts.wsgi
