@@ -10,11 +10,12 @@
     {% endif %}
 
 
+  
     {% for evaluation in submitted_evaluated_forms_by_student %}
-  <div id="infobox1" class="col col-3 layout-spacing">
-    <div class="statbox widget box box-shadow">
+  <div id="infobox{{ evaluation.id}}" class="col-xl-3 col-lg-3 layout-spacing " >
+    <div class="statbox widget box box-shadow ">
       <div class="widget-content widget-content-area">
-        <div class="infobox-1">
+        <div class="infobox-1 ">
           <div class="info-icon">
               <span class="badge badge-success mb-2">Evaluated</span>
           </div>
@@ -31,13 +32,13 @@
     </div>
   </div>
 {% endfor %}
-
+   
 
 
 
 <hr/>
     {% for evaluation in evaluation_forms_specific_to_student_not_evaluated %}
-  <div id="infobox1" class="col col-3 layout-spacing">
+    <div id="infobox{{ evaluation.id}}" class="col-xl-3 col-lg-3 layout-spacing" >
     <div class="statbox widget box box-shadow">
       <div class="widget-content widget-content-area">
         <div class="infobox-1">
@@ -55,6 +56,7 @@
         </div>
       </div>
     </div>
+  
   </div>
 {% endfor %}
 
