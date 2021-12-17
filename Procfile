@@ -1,1 +1,1 @@
-web: gunicorn gimpa_sts.wsgi
+web: gunicorn gimpa_sts.wsgi --log-file -
