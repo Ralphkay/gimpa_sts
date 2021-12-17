@@ -15,6 +15,8 @@ def register(request):
 
 
 def login_student(request):
+    page_title = 'Login/Register'
+    context = {'page_title': page_title}
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
@@ -28,8 +30,9 @@ def login_student(request):
             return redirect('evaluations')
         else:
             print('login error')
-            return render(request,'accounts/auth/login.html')
-    return render(request,'accounts/auth/login.html')
+            messages.error(request, 'Login error, credentials invalid')
+            return redirect('login_student')
+    return render(request,'accounts/auth/login.html', context)
 
 
 def logout_student(request):

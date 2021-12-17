@@ -5,29 +5,52 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>CORK Admin Template - Login Cover Page</title>
+    <title>GI-STS - {{page_title}}</title>
     <link rel="icon" type="image/x-icon" href=" {% static 'assets/img/favicon.ico' %} "/>
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&display=swap" rel="stylesheet">
     <link href=" {% static 'bootstrap/css/bootstrap.min.css' %} " rel="stylesheet" type="text/css" />
     <link href=" {% static 'assets/css/plugins.css' %} " rel="stylesheet" type="text/css" />
     <link href=" {% static 'assets/css/structure.css' %} " rel="stylesheet" type="text/css" class="structure" />
+    <link href="{% static 'assets/css/scrollspyNav.css' %}" rel="stylesheet" type="text/css" />
     <link href=" {% static 'assets/css/authentication/form-1.css' %} " rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/elements/alert.css' %}">
     <!-- END GLOBAL MANDATORY STYLES -->
     <link rel="stylesheet" type="text/css" href=" {% static 'assets/css/forms/theme-checkbox-radio.css' %} ">
     <link rel="stylesheet" type="text/css" href=" {% static 'assets/css/forms/switches.css' %} ">
 </head>
-<body class="form">
-    
 
+<body class="form">
     <div class="form-container">
         <div class="form-form">
             <div class="form-form-wrap">
                 <div class="form-container">
                     <div class="form-content">
-
+                    
                         <h1 class="">Welcome to <a href=" {% static 'index.html' %} "><span class="brand-name">GI-STS</span></a></h1>
                         <p class="signup-link">New Here? <a href=" {% static 'auth_register.html' %} ">Create your account</a></p>
+
+                       
+                            <div>
+
+                                {%if messages%}
+                            {%for message in messages%}
+                            <div class="alert alert-danger mb-4" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                      </svg>
+                                </button>
+                                {{message.message}}</button>
+                            </div>  
+                                
+                            {%endfor%}
+                            {%endif%}
+                            </div>
+                     
+
+
                         <form class="text-left" method="post">
                             {%csrf_token %}
                             <div class="form">
@@ -70,7 +93,7 @@
 
                             </div>
                         </form>                        
-                        <p class="terms-conditions">© 2021 All Rights Reserved. <a href=" {% static 'index.html' %} ">CORK</a> is a product of Designreset. <a href="javascript:void(0);">Cookie Preferences</a>, <a href="javascript:void(0);">Privacy</a>, and <a href="javascript:void(0);">Terms</a>.</p>
+                        <p class="terms-conditions">© 2021 All Rights Reserved. <a href=" {% static 'index.html' %} ">GIST</a> <a href="javascript:void(0);">Cookie Preferences</a> • Privacy</a>, and <a href="javascript:void(0);">Terms</a>.</p>
 
                     </div>                    
                 </div>
@@ -92,5 +115,21 @@
     <!-- END GLOBAL MANDATORY SCRIPTS -->
     <script src=" {% static 'assets/js/authentication/form-1.js' %} "></script>
 
+    <script src="{%static 'plugins/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
+    <script src="{% static 'assets/js/app.js' %}"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            App.init();
+        });
+    </script>
+
+    <script src="{% static 'plugins/highlight/highlight.pack.js' %}"></script>
+    <script src="{% static 'assets/js/custom.js' %}"></script>
+    <script src="{% static 'assets/js/scrollspyNav.js'%}"></script>
+    <!-- <script src="{% static 'assets/js/scrollspyNav.js'%}"></script> -->
+    
+   
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>CORK Admin Template - Login Cover Page</title>
+    <title>GISTS • {{page_title}}</title>
     <link rel="icon" type="image/x-icon" href=" {% static 'assets/img/favicon.ico' %} "/>
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&display=swap" rel="stylesheet">
@@ -23,9 +23,21 @@
         <div class="form-form">
             <div class="form-form-wrap">
                 <div class="form-container">
+
+
+                    {%if messages%}
+                    {%for message in messages%}
+                    <div class="alert alert-{{message.type}} alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        {{message.message}}
+                    {%endfor%}
+                    {%endif%}
+
                     <div class="form-content">
 
-                        <h1 class="">Log In to <a href=" {% static 'index.html' %} "><span class="brand-name">CORK</span></a></h1>
+                        <h1 class="">Log In to <a href=" {% static 'index.html' %} "><span class="brand-name">GI-STS</span></a></h1>
                         <p class="signup-link">New Here? <a href=" {% static 'auth_register.html' %} ">Create an account</a></p>
                         <form class="text-left">
                             <div class="form">
@@ -68,7 +80,7 @@
 
                             </div>
                         </form>                        
-                        <p class="terms-conditions">© 2021 All Rights Reserved. <a href=" {% static 'index.html' %} ">CORK</a> is a product of Designreset. <a href="javascript:void(0);">Cookie Preferences</a>, <a href="javascript:void(0);">Privacy</a>, and <a href="javascript:void(0);">Terms</a>.</p>
+                        <p class="terms-conditions">© 2021 All Rights Reserved. <a href=" {% static 'index.html' %} ">GI-STS</a> is a product of Designreset. <a href="javascript:void(0);">Cookie Preferences</a>, <a href="javascript:void(0);">Privacy</a>, and <a href="javascript:void(0);">Terms</a>.</p>
 
                     </div>                    
                 </div>
