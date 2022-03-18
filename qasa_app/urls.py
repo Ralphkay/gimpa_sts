@@ -33,17 +33,17 @@ urlpatterns = [
     path('view_schools/<slug:slug>/', school_with_departments, name='school_with_departments'),
 
     # path('view_schools/<str:slug>/department/<int:pk>/', view_department, name='view_department'),
-    path('departments/<slug:slug>/', view_department, name='view_department'),
+    path('view_schools/departments/<slug:slug>/', view_department, name='view_department'),
     path('view_schools/departments/create', create_department, name='create_department'),
     path('view_schools/department/<int:pk>/delete', delete_department, name='delete_department'),
     path('view_schools/departments/<slug:slug>/edit', edit_department, name='edit_department'),
 
-    path('programs/<slug:slug>/', view_program, name='view_program'),
-    path('programs/<slug:slug>/edit', edit_program, name='edit_program'),
+    path('view_schools/programs/<slug:slug>/', view_program, name='view_program'),
+    path('view_schools/programs/<slug:slug>/edit', edit_program, name='edit_program'),
     path('view_schools/programs/create', create_program, name='create_program'),
 
     path('view_schools/courses/', create_course, name='create_course'),
-    path('courses/<slug:slug>/', view_course, name='view_course'),
+    path('view_schools/courses/<slug:slug>/', view_course, name='view_course'),
     path('view_schools/courses/<slug:slug>/edit', edit_course, name='edit_course'),
     path('view_schools/courses/<slug:slug>/delete', delete_course, name='delete_course'),
 

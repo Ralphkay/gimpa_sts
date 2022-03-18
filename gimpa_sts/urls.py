@@ -30,7 +30,6 @@ urlpatterns = [
                   path('', include('evaluation_app.urls')),
                   path('profile/student/<int:pk>/create', student_profile_create, name="student_profile_create"),
 
-
                   # path('__debug__/', include('debug_toolbar.urls')),
 
               ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
