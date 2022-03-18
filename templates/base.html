@@ -10,12 +10,14 @@
     <link rel="icon" type="image/x-icon" href=" {% static 'assets/img/favicon.ico' %} " />
     <link href=" {% static 'assets/css/loader.css' %} " rel="stylesheet" type="text/css" />
     <script src=" {% static 'assets/js/loader.js' %} "></script>
-
+    <link rel="stylesheet" type="text/css" href=" {% static  'plugins/table/datatable/datatables.css' %}">
+    <link rel="stylesheet" type="text/css" href=" {% static  'plugins/table/datatable/dt-global_style.css' %}">
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&display=swap" rel="stylesheet">
     <link href=" {% static 'bootstrap/css/bootstrap.min.css' %} " rel="stylesheet" type="text/css" />
     <link href=" {% static 'assets/css/plugins.css' %} " rel="stylesheet" type="text/css" />
     <link href=" {% static 'assets/css/structure.css' %} " rel="stylesheet" type="text/css" class="structure" />
+    <link href=" {% static 'plugins/perfect-scrollbar/perfect-scrollbar.css' %} " rel="stylesheet" type="text/css" class="structure" />
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!--  BEGIN CUSTOM STYLE FILE  -->
@@ -30,12 +32,14 @@
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <!-- <link href="{% static 'assets/css/elements/infobox.css' %}" rel="stylesheet" type="text/css" /> -->
     <link href="{% static 'plugins/notification/snackbar/snackbar.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/apps/invoice.css' %}" rel="stylesheet" type="text/css" />
 
     <style>
         #formValidate .wizard > .content {min-height: 25em;}
         #example-vertical.wizard > .content {min-height: 24.5em;}
     </style>
 
+<script src="https://unpkg.com/htmx.org@1.6.1"></script>
 </head>
 
 <body class="dashboard-analytics">
@@ -419,7 +423,7 @@
                         </svg>
                     </li>
 
-         
+
 
 
 
@@ -1175,13 +1179,13 @@
                                     <a href=" {% static 'auth_login.html' %} "> Login </a>
                                 </li>
                                 <li>
-                                    <a href=" {% static 'auth_login_boxed.html' %} "> Login Boxed </a>
+                                    <a href=" {% static 'login.html' %} "> Login Boxed </a>
                                 </li>
                                 <li>
                                     <a href=" {% static 'auth_register.html' %} "> Register </a>
                                 </li>
                                 <li>
-                                    <a href=" {% static 'auth_register_boxed.html' %} "> Register Boxed </a>
+                                    <a href=" {% static 'register.html' %} "> Register Boxed </a>
                                 </li>
                                 <li>
                                     <a href=" {% static 'auth_lockscreen.html' %} "> Unlock </a>
@@ -1274,11 +1278,11 @@
                     </div>
                 </div>
 
-               
 
-                <div class="row layout-top-spacing">
 
-                       
+                <div class=" ">
+
+
 
                     {%block content%}{% endblock%}
 
@@ -1343,7 +1347,7 @@
     <!-- END GLOBAL MANDATORY SCRIPTS -->
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
-   
+
     <script src=" {% static 'plugins/apex/apexcharts.min.js' %} "></script>
     <script src=" {% static 'assets/js/dashboard/dash_1.js' %} "></script>
 
@@ -1353,10 +1357,13 @@
     <script src="{% static 'plugins/jquery-step/custom-jquery.steps.js' %}"></script>
     <script src=" {% static 'assets/js/sts.js' %} "></script>
      <script src="{% static 'plugins/notification/snackbar/snackbar.min.js' %}"></script>
+     <script src="{% static 'plugins/table/datatable/datatables.js' %}"></script>
+     <script src="{% static 'plugins/perfect-scrollbar/perfect-scrollbar.min.js' %}"></script>
     <!-- END PAGE LEVEL PLUGINS -->
 
     <!--  BEGIN CUSTOM SCRIPTS FILE  -->
     <script src="{%static 'assets/js/components/notification/custom-snackbar.js' %}"></script>
+     <script src="{%static 'assets/js/apps/invoice.js'%}"></script>
     {%if messages%}
     {%for message in messages%}
 

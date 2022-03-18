@@ -7,24 +7,27 @@
 .widget-table-one {
   .widget-heading {
     display: flex;
+    margin-bottom: 31px;
+    justify-content: space-between;
+
+    .task-action {
+      .dropdown-toggle svg {
+        color: $m-color_6;
+        width: 19px;
+        height: 19px;
+      }
+
+      .dropdown-menu {
+        transform: translate3d(-141px, c0, 0px);
+      }
+    }
   }
 
-  .widget-content {}
-
   .transactions-list {
-    padding: 12px 12px;
-    border: 1px dashed $m-color_4;
     border-radius: 6px;
-    -webkit-transition: all 0.1s ease;
-    transition: all 0.1s ease;
 
     &:not(:last-child) {
-      margin-bottom: 15px;
-    }
-
-    &:hover {
-      -webkit-transform: translateY(-1px) scale(1.01);
-      transform: translateY(-1px) scale(1.01);
+      margin-bottom: 22.2px;
     }
 
     .t-item {
@@ -41,39 +44,58 @@
         .avatar {
           position: relative;
           display: inline-block;
-          width: 38px;
-          height: 38px;
           font-size: 14px;
           font-weight: 600;
           letter-spacing: 1px;
 
           .avatar-title {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
             background-color: $l-danger;
             color: $danger;
-          }
-        }
-
-        .icon {
-          position: relative;
-          display: inline-block;
-          padding: 10px;
-          background-color: $l-warning;
-          border-radius: 50%;
-
-          svg {
-            display: flex;
+            border-radius: 12px;
+            position: relative;
+            border-radius: 12px;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 19px;
-            height: 19px;
-            color: $warning;
-            stroke-width: 2;
+            height: 42px;
+            width: 42px;
           }
+        }
+      }
+    }
+
+    &.t-info .t-item .t-icon .avatar .avatar-title {
+      background-color: $l-info;
+      color: $info;
+    }
+
+    &.t-secondary .t-item .t-icon .icon {
+      background-color: $l-secondary;
+
+      svg {
+        color: $secondary;
+      }
+    }
+
+    .t-item {
+      .t-icon .icon {
+        position: relative;
+        background-color: $l-warning;
+        border-radius: 12px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 42px;
+        width: 42px;
+
+        svg {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 19px;
+          height: 19px;
+          color: $warning;
+          stroke-width: 2;
         }
       }
 
@@ -81,18 +103,24 @@
         align-self: center;
 
         h4 {
-          font-size: 15px;
-          letter-spacing: 0px;
-          font-weight: 600;
+          font-size: 14px;
+          font-weight: 700;
           margin-bottom: 0;
+          transition: all 0.5s ease;
         }
+      }
+    }
 
-        .meta-date {
-          font-size: 12px;
-          margin-bottom: 0;
-          font-weight: 600;
-          color: $m-color_6;
-        }
+    &:hover .t-item .t-name h4 {
+      color: $info;
+    }
+
+    .t-item {
+      .t-name .meta-date {
+        font-size: 12px;
+        margin-bottom: 0;
+        font-weight: 500;
+        color: $m-color_6;
       }
 
       .t-rate {
@@ -100,8 +128,9 @@
 
         p {
           margin-bottom: 0;
-          font-size: 13px;
-          letter-spacing: 0px;
+          font-size: 14px;
+          letter-spacing: 1px;
+          font-weight: 500;
         }
 
         svg {
@@ -110,16 +139,12 @@
           vertical-align: baseline;
         }
 
-        &.rate-inc {
-          p, svg {
-            color: $m-color_14;
-          }
+        &.rate-inc p {
+          color: $m-color_14;
         }
 
-        &.rate-dec {
-          p, svg {
-            color: $danger;
-          }
+        &.rate-dec p {
+          color: $danger;
         }
       }
     }

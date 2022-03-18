@@ -33,7 +33,7 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 }
 
 span.hljs-attr {
-    color: #c2d5ff;
+    color: #eaf1ff;
 }
 span.hljs-name {
     color: #2196f3;
@@ -79,7 +79,7 @@ span.hljs-name {
 .hljs-bullet,
 .hljs-code,
 .hljs-addition {
-  color: #8dbf42;
+  color: #1abc9c;
 }
 
 

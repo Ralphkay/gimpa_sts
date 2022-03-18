@@ -5,16 +5,14 @@
 @import '../../base/base';    // Base Variables
 
 .widget-content-area {
-  -webkit-box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.0901960784), 0 1px 20px 0 rgba(0, 0, 0, 0.08), 0px 1px 11px 0px rgba(0, 0, 0, 0.06);
-  -moz-box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.0901960784), 0 1px 20px 0 rgba(0, 0, 0, 0.08), 0px 1px 11px 0px rgba(0, 0, 0, 0.06);
-  box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.0901960784), 0 1px 20px 0 rgba(0, 0, 0, 0.08), 0px 1px 11px 0px rgba(0, 0, 0, 0.06);
+  border: 1px solid $m-color_3;
+  box-shadow: 0 0 40px 0 rgba(94, 92, 154, 0.06);
 }
+
 .layout-spacing {
-    padding-bottom: 25px;
+  padding-bottom: 25px;
 }
-body.minimal .widget-content-area {
-    border: 1px solid rgba(92, 26, 195, 0.14);
-}
+
 /* 
 ===================
     User Profile
@@ -39,7 +37,7 @@ body.minimal .widget-content-area {
       font-size: 17px;
       vertical-align: middle;
       margin-right: 0;
-      color: $white;
+      color: #fff;
       width: 19px;
       align-self: center;
     }
@@ -243,7 +241,7 @@ body.minimal .widget-content-area {
   .b-skills {
     padding: 22px 16px;
     box-shadow: 2px 5px 17px 0 rgba(31, 45, 61, 0.17);
-    background: $white;
+    background: #fff;
     border-radius: 10px;
     padding: 30px 30px 24px;
 

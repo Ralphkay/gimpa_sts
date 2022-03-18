@@ -10,14 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
-import dj_database_url
-import django_heroku
+# import dj_database_url
+# import django_heroku
 
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -28,8 +27,7 @@ SECRET_KEY = 'django-insecure-bj1g@42&be#x4utwabt*2)5!j66nj$0rkbs-_44b@xhg+#g0#j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = []
-
+# ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 
@@ -39,22 +37,28 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic',
+    'django.contrib.postgres',
+    # "debug_toolbar",
+    # 'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
-    'evaluation_app',
     'accounts',
+    'evaluation_app',
+    'qasa_app',
+    'pages_app'
+
 ]
 
-
 MIDDLEWARE = [
+    # "debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'gimpa_sts.urls'
@@ -64,7 +68,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             BASE_DIR / 'templates/',
-            ],
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,17 +83,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'gimpa_sts.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # },
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -109,8 +119,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'accounts.User'
 
-LOGIN_URL = '/accounts/login-student/'
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -125,16 +138,14 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Change 'default' database configuration with $DATABASE_URL.
-DATABASES['default'].update(dj_database_url.config(conn_max_age=500, ssl_require=True))
+# DATABASES['default'].update(dj_database_url.config(conn_max_age=500, ssl_require=True))
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -151,12 +162,18 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
+
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+# django_heroku.settings(locals())

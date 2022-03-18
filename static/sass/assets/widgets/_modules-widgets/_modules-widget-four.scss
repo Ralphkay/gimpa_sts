@@ -1,25 +1,26 @@
 /*
-    ===========================
+    ====================
         Visitors by Browser
-    ===========================
+    ====================
 */
-body.minimal .widget-four {
-    padding: 20px;
-}
 .widget-four {
   position: relative;
-  background: $white;
+  background: #fff;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 6px;
   height: 100%;
+  box-shadow: none;
+
+  border: 1px solid #e0e6ed;
+  box-shadow: 0 0 40px 0 rgba(94, 92, 154, 0.06);
 
   .widget-heading {
-    margin-bottom: 54px;
+    margin-bottom: 25px;
 
     h5 {
       font-size: 17px;
       display: block;
-      color: $m-color_10;
+      color: #0e1726;
       font-weight: 600;
       margin-bottom: 0;
     }
@@ -38,7 +39,7 @@ body.minimal .widget-four {
 
     .w-icon {
       display: inline-block;
-      padding: 8px 8px;
+      padding: 10px 9px;
       border-radius: 50%;
       display: inline-flex;
       align-self: center;
@@ -48,34 +49,34 @@ body.minimal .widget-four {
 
       svg {
         display: block;
-        width: 17px;
-        height: 17px;
+        width: 15px;
+        height: 15px;
       }
     }
 
     .browser-list {
       &:nth-child(1) .w-icon {
-        background: $l-primary;
+        background: #eaf1ff;
       }
 
       &:nth-child(2) .w-icon {
-        background: $l-danger;
+        background: #fff5f5;
       }
 
       &:nth-child(3) .w-icon {
-        background: $l-warning;
+        background: #fff9ed;
       }
 
       &:nth-child(1) .w-icon svg {
-        color: $primary;
+        color: #4361ee;
       }
 
       &:nth-child(2) .w-icon svg {
-        color: $danger;
+        color: #e7515a;
       }
 
       &:nth-child(3) .w-icon svg {
-        color: $warning;
+        color: #e2a03f;
       }
     }
 
@@ -93,14 +94,14 @@ body.minimal .widget-four {
         font-size: 13px;
         font-weight: 600;
         margin-bottom: 0;
-        color: $m-color_6;
+        color: #888ea8;
       }
 
       p {
         font-size: 12px;
         font-weight: 600;
         margin-bottom: 0;
-        color: $m-color_6;
+        color: #888ea8;
       }
     }
 
@@ -113,18 +114,34 @@ body.minimal .widget-four {
 
       .progress-bar {
         position: relative;
-
-        &:before {
-          content: '';
-          height: 7px;
-          width: 7px;
-          background: $white;
-          position: absolute;
-          right: 3px;
-          border-radius: 50%;
-          top: 3.4px;
-        }
       }
     }
   }
+}
+
+.progress .progress-bar {
+  &.bg-gradient-primary {
+    background-color: #2a2a72;
+    background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+  }
+
+  &.bg-gradient-danger {
+    background-image: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%);
+  }
+
+  &.bg-gradient-warning {
+    background-color: #fc9842;
+    background-image: linear-gradient(315deg, #fc9842 0%, #fe5f75 74%);
+  }
+}
+
+.widget-four .widget-content .w-browser-stats .progress .progress-bar:before {
+  content: '';
+  height: 7px;
+  width: 7px;
+  background: #fff;
+  position: absolute;
+  right: 3px;
+  border-radius: 50%;
+  top: 3.4px;
 }

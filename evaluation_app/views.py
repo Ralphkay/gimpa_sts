@@ -2,63 +2,62 @@ from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView, ListView, DetailView, View
+from django.contrib import messages
 
+from accounts.auth_decorators import allowed_groups
 from accounts.models import Student
 from .models import Evaluation, EvaluationSubmission, Program, Course
 from .forms import EvaluationForm
-
+from django.contrib.auth import get_user_model
 
 # Create your views here.
 
+User = get_user_model()
+
 
 @login_required
+@allowed_groups(permitted_groups=['student','qasa'])
 def evaluations(request):
-    all_evaluations = Evaluation.objects.all().count()
-
-    # 1. fetch non-submitted evaluations related to student
-    student = get_object_or_404(Student, user=request.user)
-
+    student = get_object_or_404(Student, user=request.user.id)
+    # user = User.objects.get(id=request.user.id)
+    # print("student =>", user, student)
+    # student = Student.objects.filter(user=request.user.id)
     courses_assigned_to_student_by_level = Course.objects.filter(program=student.program, level=student.level)
-    submitted_evaluated_forms_by_student = EvaluationSubmission.objects.filter(submitter=student, is_evaluated=True)
-    courses = Course.objects.all()
-    ids_of_courses_evaluated_by_student = []
-
-    for submitted_form in submitted_evaluated_forms_by_student:
-        for course in courses:
-            if course.name == submitted_form.evaluationInfo.course.name:
-                ids_of_courses_evaluated_by_student.append(course.id)
-
-    # filtered_evaluations = Evaluation.objects.filter(~Q(course__in=courses_assigned_to_student_by_level))
-    evaluation_submissions = Evaluation.objects.filter(Q(course__in=courses_assigned_to_student_by_level)). \
-        exclude(course__in=ids_of_courses_evaluated_by_student)
-
-    # fetch submitted evaluations by students, mark them as only editable
-    # evaluation_forms_specific_to_student_not_evaluated = EvaluationSubmission.objects.filter(
-    #     Q(evaluationInfo__in=evaluation_submissions),
-    #     is_evaluated=False)
-    evaluation_forms_specific_to_student_not_evaluated = EvaluationSubmission.objects.filter(
-        Q(evaluationInfo__in=evaluation_submissions),
-        is_evaluated=False)
-
-    print(evaluation_forms_specific_to_student_not_evaluated)
-
-    # print(submitted_evaluated_forms_by_student)
-    # non_submitted = []
-    # for e in evaluation_forms_specific_to_student_not_evaluated:
-    #     if e.evaluationInfo.course.name not in submitted_evaluated_forms_by_student:
-    #         non_submitted.append(e)
+    evaluated_submissions = EvaluationSubmission.objects.filter(submitter=student).values_list('evaluationInfo')
+    evaluation_set = Evaluation.objects.filter(Q(course__in=courses_assigned_to_student_by_level)).exclude(id__in=evaluated_submissions)
     #
-    # print(non_submitted)
-
-
-    context = {'page_title': 'Evaluation Module', 'available_evaluations': all_evaluations,
-               'evaluation_forms_specific_to_student_not_evaluated': evaluation_forms_specific_to_student_not_evaluated,
-               "submitted_evaluated_forms_by_student": submitted_evaluated_forms_by_student}
-
+    # print(evaluation_set)
+    #
+    context = {'evaluations': evaluation_set, 'evaluated_submissions': evaluated_submissions, 'page_title':'Evaluations'}
+    print(request.user, student, courses_assigned_to_student_by_level)
     return render(request, 'evaluation_app/evaluations.html', context)
 
 
 @login_required
+@allowed_groups(permitted_groups=['student'])
+def evaluation_view_form(request, pk):
+    evaluation_instance = get_object_or_404(Evaluation, pk=pk)
+    student = get_object_or_404(Student, user=request.user)
+
+    evaluation_form = EvaluationForm(initial={'evaluationInfo': evaluation})
+
+    if request.method == 'POST':
+        evaluation_form = EvaluationForm(request.POST, initial={'evaluationInfo': evaluation_instance,
+                                                                'submitter': request.user.id})
+        if evaluation_form.is_valid():
+            EvaluationSubmission(submitter=student, evaluationInfo=evaluation_instance,
+                                 **evaluation_form.cleaned_data).save()
+            messages.success(request, f"Thank you for evaluating!")
+            return redirect('evaluations')
+        else:
+            print(evaluation_form.errors)
+
+    context = {'evaluation': evaluation_instance, 'evaluation_form': evaluation_form}
+    return render(request, 'evaluation_app/evaluation_form.html', context)
+
+
+@login_required
+@allowed_groups(permitted_groups=['qasa'])
 def edit_evaluation(request, pk):
     student = get_object_or_404(Student, user=request.user)
     evaluation_submission = get_object_or_404(EvaluationSubmission, pk=pk)
@@ -80,6 +79,7 @@ def edit_evaluation(request, pk):
 
 
 @login_required
+@allowed_groups(permitted_groups=['student','qasa'])
 def evaluation(request, slug):
     # fetch all yet to be evaluated courses filtered by student's course and submissions
     # (meaning ones he may not have submitted yet)

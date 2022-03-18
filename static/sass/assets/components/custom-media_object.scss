@@ -136,12 +136,13 @@
           }
 
           svg {
-            margin-left: 20px;
             color: $m-color_6;
             align-self: center;
             width: 20px;
             height: 20px;
             fill: rgba(0, 23, 55, 0.08);
+            float: right;
+            margin-right: 0;
           }
 
           &:hover svg {

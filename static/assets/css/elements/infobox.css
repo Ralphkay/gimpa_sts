@@ -25,7 +25,7 @@
     height: 50px;
     stroke-width: 1px;
     margin-bottom: 20px;
-    color: #1b55e2; }
+    color: #4361ee; }
   .infobox-1 .info-heading {
     font-weight: 600;
     font-size: 19px;
@@ -36,7 +36,7 @@
     color: #888ea8;
     margin-bottom: 15px; }
   .infobox-1 .info-link {
-    color: #1b55e2;
+    color: #4361ee;
     font-weight: 600; }
     .infobox-1 .info-link svg {
       width: 15px;
@@ -100,7 +100,7 @@
   .infobox-3 .info-icon {
     position: absolute;
     margin-bottom: 20px;
-    background: #1b55e2;
+    background: #4361ee;
     display: inline-block;
     top: -31px;
     padding: 6px;
@@ -120,7 +120,7 @@
     color: #888ea8;
     margin-bottom: 15px; }
   .infobox-3 .info-link {
-    color: #1b55e2;
+    color: #4361ee;
     font-weight: 600; }
     .infobox-3 .info-link svg {
       width: 15px;

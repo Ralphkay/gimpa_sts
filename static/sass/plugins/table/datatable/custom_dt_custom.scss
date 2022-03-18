@@ -4,19 +4,11 @@
 
 @import '../../../base/base';    // Base Variables
 
-body.minimal .widget-content-area {
-    border: none!important;
-}
+
 .widget-content-area {
   box-shadow: none !important;
-}
-
-table.dataTable {
-  border-collapse: separate !important;
-  border-spacing: 0 5px;
-  margin-top: 50px !important;
-  margin-bottom: 50px !important;
-  border-collapse: collapse !important;
+  border: none;
+  border-radius: 6px;
 }
 
 .table-hover:not(.table-dark) tbody tr {
@@ -26,7 +18,7 @@ table.dataTable {
   }
 
   &:hover .new-control.new-checkbox .new-control-indicator {
-    border: 2px solid $primary;
+    border: 1px solid $primary;
   }
 }
 
@@ -35,16 +27,15 @@ table.dataTable {
 .style-1 {
   .user-name {
     font-size: 15px;
-    font-weight: 600;
-    color: $warning;
+    color: $secondary;
   }
 
   .profile-img img {
-    width: 50px;
-    height: 50px;
-    border: 2px solid $m-color_5;
     border-radius: 6px;
-    box-shadow: 0px 0px 14px 3px rgba(126, 142, 177, 0.24);
+    background-color: $m-color_2;
+    padding: 2px;
+    width: 35px;
+    height: 35px;
   }
 }
 
@@ -64,30 +55,10 @@ table.dataTable {
   .profile-img {}
 
   img.profile-img {
-    width: 50px;
-    height: 50px;
-    border: 2px solid $m-color_5;
-    box-shadow: 0px 0px 14px 3px rgba(126, 142, 177, 0.24);
-  }
-
-  .badge {
-    background: transparent;
-    transform: none;
-  }
-
-  .badge-primary {
-    color: $primary;
-    border: 2px dashed $primary;
-  }
-
-  .badge-warning {
-    color: $warning;
-    border: 2px dashed $warning;
-  }
-
-  .badge-danger {
-    color: $danger;
-    border: 2px dashed $danger;
+    background-color: $m-color_2;
+    padding: 2px;
+    width: 35px;
+    height: 35px;
   }
 }
 
@@ -107,55 +78,53 @@ table.dataTable {
   .profile-img {}
 
   img.profile-img {
-    width: 50px;
-    height: 50px;
-    border: 2px solid $m-color_5;
     border-radius: 6px;
-    box-shadow: 0px 0px 14px 3px rgba(126, 142, 177, 0.24);
-  }
-
-  .badge {
-    background: transparent;
-    transform: none;
-  }
-
-  .badge-primary {
-    color: $primary;
-    border: 2px dashed $primary;
-  }
-
-  .badge-warning {
-    color: $warning;
-    border: 2px dashed $warning;
-  }
-
-  .badge-danger {
-    color: $danger;
-    border: 2px dashed $danger;
+    background-color: $m-color_2;
+    padding: 2px;
+    width: 35px;
+    height: 35px;
   }
 
   .table-controls {
     padding: 0;
+    margin-bottom: 0;
 
     li {
       list-style: none;
       display: inline;
 
       svg {
-        color: $m-color_6;
+        /* color: $m-color_6;
         vertical-align: middle;
         width: 28px;
         height: 28px;
         fill: rgba(0, 23, 55, 0.08);
+        cursor: pointer; */
+
+        /* color: $dark;
+        margin-right: 6px;
+        vertical-align: middle;
+        fill: $m-color_1; */
         cursor: pointer;
+
+        /* stroke-width: 1; */
+
+        margin: 0;
+        vertical-align: middle;
+        cursor: pointer;
+        color: $m-color_9;
+        stroke-width: 1.5;
+        width: 28px;
+        height: 28px;
       }
     }
   }
 
   &.table-hover:not(.table-dark) tbody tr:hover {
     .table-controls li svg {
-      color: $danger;
-      fill: rgba(231, 81, 90, 0.2196078431);
+      color: $m-color_18;
+
+      /* fill: rgba(231, 81, 90, 0.2196078431372549); */
     }
 
     td:first-child {

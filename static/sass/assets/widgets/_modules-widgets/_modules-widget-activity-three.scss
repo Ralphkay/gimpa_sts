@@ -6,21 +6,21 @@
 
 .widget.widget-activity-three {
   position: relative;
-  background: #fff;
+  background: $m-color_10;
   border-radius: 8px;
   height: 100%;
 
   .widget-heading {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px dashed #e0e6ed;
+    border-bottom: 1px dashed $dark;
     padding: 20px 20px;
     padding-bottom: 20px;
 
     h5 {
       font-size: 17px;
       display: block;
-      color: #0e1726;
+      color: $m-color_3;
       font-weight: 600;
       margin-bottom: 0;
     }
@@ -63,23 +63,23 @@
       }
 
       &.t-success {
-        background-color: #009688;
-        box-shadow: 0 10px 20px -10px #009688;
+        background-color: $m-color_14;
+        box-shadow: 0 10px 20px -10px $m-color_14;
       }
 
       &.t-danger {
-        background-color: #e7515a;
-        box-shadow: 0 10px 20px -10px #e7515a;
+        background-color: $danger;
+        box-shadow: 0 10px 20px -10px $danger;
       }
 
       &.t-warning {
-        background-color: #e2a03f;
-        box-shadow: 0 10px 20px -10px #e2a03f;
+        background-color: $warning;
+        box-shadow: 0 10px 20px -10px $warning;
       }
 
       &.t-dark {
-        background-color: #3b3f5c;
-        box-shadow: 0 10px 20px -10px #3b3f5c;
+        background-color: $dark;
+        box-shadow: 0 10px 20px -10px $dark;
       }
     }
 
@@ -110,7 +110,7 @@
         margin-bottom: 0;
         font-size: 11px;
         font-weight: 500;
-        color: #888ea8;
+        color: $m-color_6;
       }
     }
 
@@ -118,7 +118,7 @@
       margin-bottom: 8px;
       font-size: 13px;
       font-weight: 500;
-      color: #888ea8;
+      color: $m-color_6;
     }
 
     div.tags {
@@ -127,21 +127,6 @@
         font-size: 11px;
         letter-spacing: 1px;
         transform: none;
-      }
-
-      .badge-primary {
-        background-color: #c2d5ff;
-        color: #1b55e2;
-      }
-
-      .badge-success {
-        background-color: #e6ffbf;
-        color: #009688;
-      }
-
-      .badge-warning {
-        background-color: #ffeccb;
-        color: #e2a03f;
       }
     }
   }
@@ -153,7 +138,7 @@
     border-style: solid;
     left: 40%;
     transform: translateX(-50%);
-    border-color: #bfc9d4;
+    border-color: $m-color_4;
     width: 0;
     height: auto;
     top: 36px;

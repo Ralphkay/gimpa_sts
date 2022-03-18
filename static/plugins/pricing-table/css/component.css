@@ -50,7 +50,7 @@
   border: 2px solid #bfc9d4; }
 
 .switch.s-icons.s-outline-primary {
-  color: #1b55e2;
+  color: #4361ee;
   margin: 0 3px 0 11px; }
 
 .switch.s-icons .slider:before {
@@ -162,11 +162,11 @@
   font-weight: 600; }
 
 .billed-yearly-radio span.txt-monthly {
-  color: #1b55e2;
+  color: #4361ee;
   font-weight: 700; }
 
 .billed-yearly-radio.billed-yearly-switch span.txt-yearly {
-  color: #1b55e2;
+  color: #4361ee;
   font-weight: 700; }
 
 .billed-yearly-radio span.txt-yearly span.badge {
@@ -185,7 +185,7 @@
   margin: 6rem 0 0 0; }
 
 .pricing-plan .recommended-badge {
-  background-color: #1b55e2;
+  background-color: #4361ee;
   color: #fff;
   position: absolute;
   width: 100%;
@@ -200,15 +200,15 @@
   font-size: 16px; }
 
 .recommended .pricing-plan-label {
-  color: #acb0c3; }
+  color: #e3e4eb; }
   .recommended .pricing-plan-label strong {
-    color: #1b55e2;
+    color: #4361ee;
     font-weight: 700;
     font-size: 44px; }
 
 .pricing-plan.recommended .button {
   color: #fff !important;
-  background-color: #1b55e2 !important; }
+  background-color: #4361ee !important; }
 
 @media (max-width: 767px) {
   .pricing-plan:first-of-type {
@@ -258,7 +258,7 @@
       -moz-box-shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.2);
       box-shadow: 0px 0px 15px 1px rgba(113, 106, 202, 0.2);
       border-radius: 0.25rem;
-      border: 2px solid #1b55e2;
+      border: 2px solid #4361ee;
       background: #fff;
       font-weight: 700; }
     #pricingWrapper .stacked:hover .card-price {
@@ -291,8 +291,8 @@
   -webkit-transition: border-color 0.3s, background 0.3s;
   transition: border-color 0.3s, background 0.3s; }
   .pricing--norbu .pricing__item:hover {
-    color: #1b55e2;
-    border: 1px solid #1b55e2; }
+    color: #4361ee;
+    border: 1px solid #4361ee; }
 
 .pricing--norbu .pricing__title {
   font-size: 26px;
@@ -310,7 +310,7 @@
     bottom: 0; }
 
 .pricing--norbu .pricing__item:hover .pricing__title::after {
-  background: #1b55e2; }
+  background: #4361ee; }
 
 .pricing--norbu .icon {
   display: inline-block;
@@ -361,18 +361,18 @@
   transition: background 0.3s; }
 
 .pricing--norbu .pricing__item:hover .pricing__action {
-  color: #1b55e2;
-  background: #c2d5ff;
-  border: solid 1px #1b55e2;
+  color: #4361ee;
+  background: #eaf1ff;
+  border: solid 1px #4361ee;
   box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.1);
   will-change: opacity, transform;
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out; }
 
 .pricing--norbu .pricing__action:hover, .pricing--norbu .pricing__action:focus {
-  color: #c2d5ff;
-  background: #1b55e2;
-  border-color: #1b55e2;
+  color: #eaf1ff;
+  background: #4361ee;
+  border-color: #4361ee;
   box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.1);
   will-change: opacity, transform;
   transition: all 0.3s ease-out;
@@ -389,8 +389,8 @@
   -webkit-transition: border-color 0.3s, background 0.3s;
   transition: border-color 0.3s, background 0.3s; }
   .pricing--norbu .pricing__item:hover {
-    color: #1b55e2;
-    border: 1px solid #1b55e2; }
+    color: #4361ee;
+    border: 1px solid #4361ee; }
 
 .pricing--norbu .pricing__title {
   font-size: 26px;
@@ -408,7 +408,7 @@
     bottom: 0; }
 
 .pricing--norbu .pricing__item:hover .pricing__title::after {
-  background: #1b55e2; }
+  background: #4361ee; }
 
 .pricing--norbu .icon {
   display: inline-block;
@@ -459,18 +459,18 @@
   transition: background 0.3s; }
 
 .pricing--norbu .pricing__item:hover .pricing__action {
-  color: #1b55e2;
-  background: #c2d5ff;
-  border: solid 1px #1b55e2;
+  color: #4361ee;
+  background: #eaf1ff;
+  border: solid 1px #4361ee;
   box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.1);
   will-change: opacity, transform;
   transition: all 0.3s ease-out;
   -webkit-transition: all 0.3s ease-out; }
 
 .pricing--norbu .pricing__action:hover, .pricing--norbu .pricing__action:focus {
-  color: #c2d5ff;
-  background: #1b55e2;
-  border-color: #1b55e2;
+  color: #eaf1ff;
+  background: #4361ee;
+  border-color: #4361ee;
   box-shadow: 0px 5px 20px 0 rgba(0, 0, 0, 0.1);
   will-change: opacity, transform;
   transition: all 0.3s ease-out;

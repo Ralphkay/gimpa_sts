@@ -1,44 +1,42 @@
 import uuid
+from django.utils import timezone
 
 from django.contrib.auth.models import User
 from django.db import models
-from django.db.models.signals import post_save
-# from django.utils import timezone
-from django.dispatch import receiver
 from django.urls import reverse
 from django.utils.text import slugify
 
 from accounts.models import Student
-import datetime
 
 
 # Create your models here.
 
-class FeedbackChoices(models.IntegerChoices):
-    POOR = 1
-    GOOD = 2
-    NEUTRAL = 3
-    VERY_GOOD = 4
-    EXCELLENT = 5
+
+class AcademicYear(models.Model):
+    academic_year = models.CharField(max_length=255, null=False, blank=False)
+
+    def __str__(self):
+        return self.academic_year
 
 
 class Evaluation(models.Model):
-    """
-    This model holds all evaluation submission after
-    student has submitted evaluation 
-    (It is a parent model of the Evaluation Submission model)
-    @facilitator
-    @course level
-    """
-
+    academic_year = models.ForeignKey(AcademicYear, on_delete=models.CASCADE)
     facilitator = models.ForeignKey('Facilitator', on_delete=models.CASCADE)
     course = models.OneToOneField('Course', on_delete=models.CASCADE)
     description = models.CharField(max_length=150, blank=True, null=True)
     aggregated_score_computed_value = models.FloatField(default=0, editable=False)
     slug = models.SlugField(unique=True, db_index=True, default=uuid.uuid4(), blank=True, null=True)
+    deadline = models.DateTimeField(null=False, blank=False)
 
     class Meta:
         verbose_name_plural = 'Evaluation Reports'
+
+    @property
+    def check_active_status(self):
+        if self.deadline > timezone.now():
+            return True
+        else:
+            return False
 
     def __str__(self):
         return f"{self.course.course_code} - {self.course.name}"
@@ -49,52 +47,60 @@ class Evaluation(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('evaluation', args=[self.slug])
+        return reverse('evaluation_report', kwargs={'slug': self.slug})
 
 
 class EvaluationSubmission(models.Model):
+    class FeedbackChoices(models.IntegerChoices):
+        NOT_APPLICABLE = 0
+        STRONGLY_DISAGREE = 1
+        DISAGREE = 2
+        MODERATELY_DISAGREE = 3
+        AGREE = 4
+        STRONGLY_AGREE = 5
+
     evaluationInfo = models.ForeignKey(Evaluation, blank=True, null=True, on_delete=models.CASCADE,
                                        related_name='submitted_evaluations')
 
-    curriculum_feedback_beginning_answer = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    curriculum_feedback_course_answer = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    curriculum_feedback_lecture_answer = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    curriculum_feedback_procedures_answer = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    curriculum_feedback_books_answer = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    curriculum_computed_value_answer = models.FloatField(default=0, editable=False)
+    curriculum_feedback_beginning_answer = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    curriculum_feedback_course_answer = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    curriculum_feedback_lecture_answer = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    curriculum_feedback_outcomes_answer = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    curriculum_feedback_procedures_answer = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    curriculum_feedback_books_answer = models.IntegerField(choices=FeedbackChoices.choices, default=None)
 
-    attendance_schedule = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    attendance_punctuality = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    attendance_presence = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
+    attendance_schedule = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    attendance_punctuality = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    attendance_presence = models.IntegerField(choices=FeedbackChoices.choices, default=None)
 
-    delivery_enthusiasm = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    delivery_sequence = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    delivery_organization = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    delivery_clarity = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    delivery_contents = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    delivery_responsiveness = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    delivery_achievements = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    delivery_innovation = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    delivery_theory_practices = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
+    delivery_enthusiasm = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    delivery_sequence = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    delivery_organization = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    delivery_clarity = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    delivery_contents = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    delivery_responsiveness = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    delivery_achievements = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    delivery_innovation = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    delivery_theory_practices = models.IntegerField(choices=FeedbackChoices.choices, default=None)
 
-    assignments_relevance = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    assignments_promptitude = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    assignments_feedback = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    assignments_guidance = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
+    assignments_relevance = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    assignments_promptitude = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    assignments_feedback = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    assignments_guidance = models.IntegerField(choices=FeedbackChoices.choices, default=None)
 
-    interaction_availability = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    interaction_help = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    interaction_fairness = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
+    interaction_availability = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    interaction_help = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    interaction_fairness = models.IntegerField(choices=FeedbackChoices.choices, default=None)
 
-    environment_classroom_size = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    environment_seats = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    environment_audio_visual_equip = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    environment_public_address = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    environment_books = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    environment_computers = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    environment_internet = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    environment_air_conditioning = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
-    environment_secretariat = models.IntegerField(choices=FeedbackChoices.choices, blank=True, null=True)
+    environment_classroom_size = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    environment_seats = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    environment_audio_visual_equip = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    environment_public_address = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    environment_books = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    environment_computers = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    environment_internet = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    environment_air_conditioning = models.IntegerField(choices=FeedbackChoices.choices, default=None)
+    environment_secretariat = models.IntegerField(choices=FeedbackChoices.choices, default=None)
 
     slug = models.SlugField(blank=True, null=True, unique=True, default=uuid.uuid4(), db_index=True)
     submitter = models.ForeignKey(Student, blank=True, null=True, on_delete=models.PROTECT)
@@ -117,12 +123,28 @@ class EvaluationSubmission(models.Model):
         unique_together = [('submitter', 'evaluationInfo')]
 
 
+# class EvaluationStatisticalResult(models.Model):
+#     evaluation = models.ForeignKey(Evaluation, on_delete=models.CASCADE)
+#     total_sum_curriculum_score = models.FloatField(null=False, blank=False, default=0)
+#     total_avg_curriculum_score = models.FloatField(null=False, blank=False, default=0)
+
+# # Signals
+# @receiver(post_save, sender=EvaluationSubmission)
+# def evaluation_created(sender, instance, created, *args, **kwargs):
+#     if created:
+#         EvaluationStatisticalResult.objects.create(evaluation=instance)
+#         print("Evaluation Submission form created successfully")
+#     else:
+#         print("Evaluation Submission form failed to create")
+#
+
+
 # Organisation Models
 class Facilitator(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     staff_id = models.IntegerField(default=0)
-    school = models.ForeignKey('School', on_delete=models.PROTECT)
+    school = models.ForeignKey('School', on_delete=models.SET_NULL, null=True, blank=False)
 
     def __str__(self):
         return self.first_name + " " + self.last_name + " (" + str(self.staff_id) + ")"
@@ -130,6 +152,12 @@ class Facilitator(models.Model):
 
 class School(models.Model):
     name = models.CharField(max_length=250)
+    description = models.TextField(null=True, blank=True)
+    slug = models.SlugField(max_length=255, null=True, blank=True, unique=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name
@@ -138,6 +166,15 @@ class School(models.Model):
 class Department(models.Model):
     name = models.CharField(max_length=250)
     school = models.ForeignKey('School', on_delete=models.CASCADE)
+    slug = models.SlugField(max_length=255, null=True, blank=True, unique=True)
+    description = models.TextField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('view_department', kwargs={'slug': self.slug})
 
     def __str__(self):
         return self.name
@@ -146,9 +183,18 @@ class Department(models.Model):
 class Program(models.Model):
     name = models.CharField(max_length=250)
     department = models.ForeignKey('Department', on_delete=models.CASCADE)
+    slug = models.SlugField(max_length=255, null=True, blank=True, unique=True)
+    description = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('view_program', kwargs={'slug': self.slug})
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
 
 class Course(models.Model):
@@ -166,16 +212,27 @@ class Course(models.Model):
     program = models.ForeignKey('Program', on_delete=models.CASCADE)
     level = models.CharField(default='', max_length=15, choices=choices)
     facilitator = models.ForeignKey('Facilitator', on_delete=models.CASCADE)
+    slug = models.SlugField(max_length=255, null=True, blank=True, unique=True)
+    description = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.name + " " + self.course_code + " (" + str(self.level) + ")"
 
+    def get_absolute_url(self):
+        return reverse('view_course', kwargs={'slug': self.slug})
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+# class EvaluationAggregatorReport(models.Model):
+#     curriculum_stats =
 
 # Signals
-@receiver(post_save, sender=Evaluation)
-def evaluation_created(sender, instance, created, *args, **kwargs):
-    if created:
-        EvaluationSubmission.objects.create(evaluationInfo=instance)
-        print("Evaluation Submission form created successfully")
-    else:
-        print("Evaluation Submission form failed to create")
+# @receiver(post_save, sender=Evaluation)
+# def evaluation_created(sender, instance, created, *args, **kwargs):
+#     if created:
+#         EvaluationSubmission.objects.create(evaluationInfo=instance)
+#         print("Evaluation Submission form created successfully")
+#     else:
+#         print("Evaluation Submission form failed to create")

@@ -10,11 +10,10 @@
 
 .faq .faq-layouting .fq-tab-section {
   padding: 35px 50px;
-  background: $white;
+  background: #fff;
   border-radius: 6px;
-  -webkit-box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.0901960784), 0 1px 20px 0 rgba(0, 0, 0, 0.08), 0px 1px 11px 0px rgba(0, 0, 0, 0.06);
-  -moz-box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.0901960784), 0 1px 20px 0 rgba(0, 0, 0, 0.08), 0px 1px 11px 0px rgba(0, 0, 0, 0.06);
-  box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.0901960784), 0 1px 20px 0 rgba(0, 0, 0, 0.08), 0px 1px 11px 0px rgba(0, 0, 0, 0.06);
+  border: 1px solid $m-color_3;
+  box-shadow: 0 0 40px 0 rgba(94, 92, 154, 0.06);
 
   h2 {
     font-size: 25px;
@@ -29,7 +28,7 @@
   }
 
   .accordion .card {
-    border: 2px solid $m-color_3;
+    border: 1px solid $m-color_3;
     border-radius: 6px;
     margin-bottom: 4px;
 
@@ -39,14 +38,16 @@
       background: none;
 
       > div {
-        padding: 19px 30px;
+        padding: 15px 19px;
         font-weight: 600;
         font-size: 16px;
         color: $primary;
         cursor: pointer;
+        display: flex;
+        justify-content: space-between;
 
         &[aria-expanded="true"] {
-          border-bottom: 2px solid $m-color_3;
+          border-bottom: 1px solid $m-color_3;
         }
       }
 
@@ -57,6 +58,7 @@
           color: $m-color_6;
           font-weight: 600;
           letter-spacing: 1px;
+          align-self: center;
         }
 
         &[aria-expanded="true"] .faq-q-title {

@@ -9,60 +9,46 @@
 
 #basic_map1 {
   width: 100%;
-  height: 757px;
+  border-radius: 12px;
+  height: 726px !important;
 }
 
 /*  Contact Section Header     */
 
 .cu-contact-section {
   .cu-section-header {
-    position: absolute;
-    background: $dark;
-    z-index: 1;
-    width: 100%;
-    padding: 15px 34px;
-    color: $white;
-    background-color: rgba(43, 80, 237, 0.1098039216);
+    margin-bottom: 50px;
 
     h4 {
-      color: $white;
+      color: $m-color_10;
       font-size: 34px;
       font-weight: 600;
-      letter-spacing: 3px;
     }
 
     p {
-      color: $white;
-      font-size: 16px;
-      letter-spacing: 1px;
+      color: $m-color_7;
+      font-size: 15px;
     }
   }
 
   position: relative;
   padding: 0;
-  background-color: $l-primary;
+  display: flex;
 
   .contact-form {
-    position: absolute;
     top: 0;
-    right: 58px;
+    right: 0;
     bottom: 0;
     margin-top: auto;
     margin-bottom: auto;
     height: fit-content;
     height: -moz-max-content;
-    height: -webkit-fit-content;
+    height: 100%;
     z-index: 2;
 
     form {
-      background: $white;
       padding: 25px 35px;
-      border-radius: 10px;
-      margin-top: 24px;
-      margin-bottom: 24px;
-      -webkit-box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.0901960784), 0 1px 20px 0 rgba(0, 0, 0, 0.08), 0px 1px 11px 0px rgba(0, 0, 0, 0.06);
-      -moz-box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.0901960784), 0 1px 20px 0 rgba(0, 0, 0, 0.08), 0px 1px 11px 0px rgba(0, 0, 0, 0.06);
-      box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.0901960784), 0 1px 20px 0 rgba(0, 0, 0, 0.08), 0px 1px 11px 0px rgba(0, 0, 0, 0.06);
+      height: 100%;
 
       .input-fields {
         position: relative;
@@ -85,46 +71,57 @@
         font-size: 22px;
         font-weight: 600;
         margin-bottom: 25px;
-        color: $dark;
+        color: $m-color_10;
       }
 
       input {
         padding: 8px 5px 8px 40px;
         background-color: transparent;
-        font-weight: 600;
 
         &::-webkit-input-placeholder, &::-ms-input-placeholder, &::-moz-placeholder {
-          color: $m-color_5;
+          color: $m-color_6;
           font-size: 14px;
         }
 
-        &:focus {
-          background-color: #ffffff;
-          border-color: $dark;
-        }
+        box-shadow: none;
+        color: $m-color_10;
+        font-weight: 400;
       }
     }
   }
 
-  .n-chk {
-    display: inline-block;
+  p {
+    color: $m-color_10;
   }
 
+  .n-chk {
+    display: inline-block;
+
+    label {
+      color: $m-color_10;
+    }
+  }
+}
+
+/* 	Contact Content 	*/
+
+.new-control.new-radio.radio-success > input:checked ~ span.new-control-indicator {
+  background: $primary !important;
+}
+
+.cu-contact-section {
   .form-group textarea {
     padding: 8px 5px 8px 43px;
     background-color: transparent;
-    margin-top: 15px;
     resize: none;
 
     &::-webkit-input-placeholder, &::-ms-input-placeholder, &::-moz-placeholder {
-      color: $m-color_5;
+      color: $m-color_6;
       font-size: 14px;
     }
 
-    &:focus {
-      background-color: #ffffff;
-      border-color: $dark;
-    }
+    color: $m-color_10;
+    font-weight: 400;
 
     &:-ms-input-placeholder {
       color: #7b8489;
@@ -136,17 +133,13 @@
     padding: 15px 25px;
     display: block;
     width: 100%;
+    background-color: $primary !important;
+    box-shadow: none;
   }
 }
 
-/* 	Contact Content 	*/
-
 @media (max-width: 991px) {
   .cu-contact-section {
-    .cu-section-header {
-      display: none;
-    }
-
     .contact-form {
       right: 0;
       left: 0;
@@ -154,24 +147,75 @@
       margin-left: auto;
       margin-top: 0;
       margin-bottom: 0;
+      position: absolute;
 
       form {
         max-width: 530px;
         margin: 0 auto;
         width: 100%;
         border-radius: 0;
+        height: 100%;
+        background-color: rgba(3, 3, 5, 42%);
+        background-attachment: fixed;
+        background-size: contain;
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(10px);
       }
     }
-  }
-}
 
-@media (max-width: 991px) {
-  body {
-    background: $white;
-  }
+    .cu-section-header {
+      background-color: rgba(3, 3, 5, 13%);
+      background-attachment: fixed;
+      background-size: contain;
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(1px);
+      padding: 15px;
+      margin-bottom: 80px;
+      border-radius: 12px;
+    }
 
-  #basic_map1 {
-    display: none;
+    .contact-form form input, .form-group textarea {
+      box-shadow: none;
+      background-color: rgba(3, 3, 5, 13%);
+      background-attachment: fixed;
+      background-size: contain;
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(1px);
+      border-radius: 12px;
+      color: #fff;
+      font-weight: 400;
+      border: none;
+    }
+
+    .contact-form form input {
+      box-shadow: none;
+      color: $m-color_4;
+      font-weight: 400;
+    }
+
+    p {
+      color: $m-color_4;
+    }
+
+    .n-chk {
+      display: inline-block;
+
+      label {
+        color: $m-color_4;
+      }
+    }
+
+    .cu-section-header p {
+      color: $m-color_4;
+      font-size: 15px;
+    }
+
+    .contact-form form h4 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 25px;
+      color: #fff;
+    }
   }
 }
 

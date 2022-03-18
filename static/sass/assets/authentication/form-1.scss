@@ -14,7 +14,7 @@ body {
   overflow: auto;
   margin: 0;
   padding: 0;
-  background: $white;
+  background: #fff;
 }
 
 .form-container {
@@ -98,7 +98,7 @@ body {
         border-bottom: none;
 
         &:focus {
-          border: 1px solid $black;
+          border: 1px solid #000;
         }
       }
 
@@ -148,13 +148,13 @@ body {
         -ms-transition: all 0.2s ease-in-out 0s;
         transition: all 0.2s ease-in-out 0s;
         color: $dark;
-        font-weight: 700;
+        font-weight: 600;
         font-size: 16px;
         border-bottom: 1px solid $m-color_3;
         padding: 0px 0 10px 35px;
 
         &::-webkit-input-placeholder, &::-ms-input-placeholder, &::-moz-placeholder {
-          color: $m-color_5;
+          color: $m-color_4;
           font-size: 14px;
         }
 

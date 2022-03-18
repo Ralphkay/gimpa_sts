@@ -11,17 +11,17 @@
 .loader {
   border: 7px solid #f1f2f3;
   border-radius: 50%;
-  border-top: 7px solid #1b55e2;
+  border-top: 7px solid #4361ee;
   width: 58px;
   height: 58px;
   -webkit-animation: spin 2s linear infinite;
   /* Safari */
   animation: spin 2s linear infinite; }
   .loader.dual-loader {
-    border-bottom: 7px solid #1b55e2; }
+    border-bottom: 7px solid #4361ee; }
   .loader.multi-loader {
     border-bottom: 7px solid #e2a03f;
-    border-right: 7px solid #8dbf42;
+    border-right: 7px solid #1abc9c;
     border-left: 7px solid #e7515a; }
 
 /* Safari */

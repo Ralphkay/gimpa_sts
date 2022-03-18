@@ -5,6 +5,9 @@ $(document).ready(function() {
     */
 
     cf = $('#column-filter').DataTable({
+        "dom": "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" +
+        "<'table-responsive'tr>" +
+        "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
         headerCallback:function(e, a, t, n, s) {
             e.getElementsByTagName("th")[0].innerHTML='<label class="new-control new-checkbox checkbox-primary m-auto">\n<input type="checkbox" class="new-control-input chk-parent select-customers-info" id="customer-all-info">\n<span class="new-control-indicator"></span><span style="visibility:hidden">c</span>\n</label>'
         },
@@ -40,6 +43,9 @@ $(document).ready(function() {
 
     // DataTable
     var table = $('#individual-col-search').DataTable({
+        "dom": "<'dt--top-section'<'row'<'col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center'l><'col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center mt-sm-0 mt-3'f>>>" +
+        "<'table-responsive'tr>" +
+        "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
         "oLanguage": {
             "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
             "sInfo": "Showing page _PAGE_ of _PAGES_",
@@ -72,8 +78,9 @@ $(document).ready(function() {
     */
 
     var table = $('#show-hide-col').DataTable( {
-        "scrollY": "283px",
-        "paging": false,
+        "dom": "<'dt--top-section'<'row'<'col-sm-12 col-md-6 d-flex justify-content-md-start justify-content-center'B><'col-sm-12 col-md-6 d-flex justify-content-md-end justify-content-center mt-md-0 mt-3'f>>>" +
+        "<'table-responsive'tr>" +
+        "<'dt--bottom-section d-sm-flex justify-content-sm-between text-center'<'dt--pages-count  mb-sm-0 mb-3'i><'dt--pagination'p>>",
         "oLanguage": {
             "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
             "sInfo": "Showing page _PAGE_ of _PAGES_",
@@ -81,16 +88,59 @@ $(document).ready(function() {
             "sSearchPlaceholder": "Search...",
            "sLengthMenu": "Results :  _MENU_",
         },
+        buttons: [
+            {
+                text: 'Name',
+                className: 'btn btn-primary btn-sm toggle-vis mb-1',
+                action: function(e, dt, node, config ) {
+                    var column = table.column( 0 );
+                    column.visible( ! column.visible() );
+                }
+            },
+            {
+                text: 'Position',
+                className: 'btn btn-primary btn-sm toggle-vis mb-1',
+                action: function(e, dt, node, config ) {
+                    var column = table.column( 1 );
+                    column.visible( ! column.visible() );
+                }
+            },
+            {
+                text: 'Office',
+                className: 'btn btn-primary btn-sm toggle-vis mb-1',
+                action: function(e, dt, node, config ) {
+                    var column = table.column( 2 );
+                    column.visible( ! column.visible() );
+                }
+            },
+            {
+                text: 'Age',
+                className: 'btn btn-primary btn-sm toggle-vis mb-1',
+                action: function(e, dt, node, config ) {
+                    var column = table.column( 3 );
+                    column.visible( ! column.visible() );
+                }
+            },
+            {
+                text: 'Start date',
+                className: 'btn btn-primary btn-sm toggle-vis mb-1',
+                action: function(e, dt, node, config ) {
+                    var column = table.column( 4 );
+                    column.visible( ! column.visible() );
+                }
+            },
+            {
+                text: 'Salary',
+                className: 'btn btn-primary btn-sm toggle-vis mb-1',
+                action: function(e, dt, node, config ) {
+                    var column = table.column( 5 );
+                    column.visible( ! column.visible() );
+                }
+            },
+        ],
         "stripeClasses": [],
         "lengthMenu": [7, 10, 20, 50],
-        "pageLength": 7 
-    } );
-    $('a.toggle-vis').on( 'click', function (e) {
-        e.preventDefault();
-        // Get the column API object
-        var column = table.column( $(this).attr('data-column') );
-        // Toggle the visibility
-        column.visible( ! column.visible() );
+        "pageLength": 7
     } );
 
 } );

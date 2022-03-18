@@ -21,12 +21,12 @@
   height: calc(100vh - 312px); }
 
 #calendar {
-  height: calc(100vh - 335px); }
+  height: calc(100vh - 301px); }
 
 .popover {
   border: none;
   border-radius: 5px;
-  border-color: #c2d5ff;
+  border-color: #eaf1ff;
   max-width: 338px;
   min-width: 270px;
   background: #fff;
@@ -36,11 +36,11 @@
 
 .popover-primary .arrow:after, .popover-primary .arrow:before {
   display: none;
-  border-top-color: #1b55e2; }
+  border-top-color: #4361ee; }
 
 .popover-primary .popover-header {
   background-color: #515365;
-  border-color: #c2d5ff;
+  border-color: #eaf1ff;
   color: #fff;
   padding: 11px 18px;
   border-top-left-radius: 5px;
@@ -84,22 +84,22 @@
     height: 10px;
     width: 10px; }
   .labels .label.label-primary:before {
-    background: #1b55e2; }
+    background: #4361ee; }
   .labels .label.label-warning:before {
     background: #e2a03f; }
   .labels .label.label-success:before {
-    background: #8dbf42; }
+    background: #1abc9c; }
   .labels .label.label-danger:before {
     background: #e7515a; }
 
 .radio-primary span.new-control-indicator {
-  border: 2px solid #1b55e2; }
+  border: 2px solid #4361ee; }
 
 .radio-warning span.new-control-indicator {
   border: 2px solid #e2a03f; }
 
 .radio-success span.new-control-indicator {
-  border: 2px solid #8dbf42; }
+  border: 2px solid #1abc9c; }
 
 .radio-danger span.new-control-indicator {
   border: 2px solid #e7515a; }
@@ -120,29 +120,29 @@ button.fc-today-button {
   padding: 6px 10px; }
 
 .bg-primary {
-  background-color: #c2d5ff !important;
-  border-color: #c2d5ff !important;
+  background-color: #eaf1ff !important;
+  border-color: #ebedf2 !important;
   color: #fff;
   -webkit-box-shadow: none !important;
   box-shadow: none !important; }
 
 .bg-success {
-  background-color: #e6ffbf !important;
-  border-color: #e6ffbf !important;
+  background-color: #ddf5f0 !important;
+  border-color: #ebedf2 !important;
   color: #fff;
   -webkit-box-shadow: none !important;
   box-shadow: none !important; }
 
 .bg-warning {
-  background-color: #ffeccb !important;
-  border-color: #ffeccb !important;
+  background-color: #fff9ed !important;
+  border-color: #ebedf2 !important;
   color: #fff;
   -webkit-box-shadow: none !important;
   box-shadow: none !important; }
 
 .bg-danger {
-  background-color: #ffe1e2 !important;
-  border-color: #ffe1e2 !important;
+  background-color: #fff5f5 !important;
+  border-color: #ebedf2 !important;
   color: #fff;
   -webkit-box-shadow: none !important;
   box-shadow: none !important; }
@@ -154,12 +154,12 @@ a.bg-primary:hover, a.bg-success:hover, a.bg-warning:hover, a.bg-danger:hover {
 .fc-scroller {
   height: 100% !important;
   position: relative;
-  height: calc(100vh - 390px) !important; }
+  height: calc(100vh - 362px) !important; }
   .fc-scroller.fc-time-grid-container {
     height: calc(100vh - 420px) !important; }
 
 .fc-agendaWeek-view .fc-scroller.fc-time-grid-container, .fc-agendaDay-view .fc-scroller.fc-time-grid-container {
-  height: calc(100vh - 435px) !important; }
+  height: calc(100vh - 408px) !important; }
 
 /*
     Modal
@@ -184,14 +184,14 @@ a.bg-primary:hover, a.bg-success:hover, a.bg-warning:hover, a.bg-danger:hover {
       margin-bottom: 5px;
       font-size: 14px;
       font-weight: 600;
-      color: #acb0c3; }
+      color: #e3e4eb; }
     #addEventsModal form .event-badge {
       margin-top: 16px; }
       #addEventsModal form .event-badge p {
         margin-bottom: 10px;
         font-size: 14px;
         font-weight: 600;
-        color: #acb0c3; }
+        color: #e3e4eb; }
     #addEventsModal form input {
       margin-bottom: 25px; }
     #addEventsModal form .form-group {
@@ -215,10 +215,10 @@ input[readonly] {
   box-shadow: none; }
 
 #addEventsModal .modal-footer #add-e {
-  background-color: #1b55e2;
+  background-color: #4361ee;
   color: #fff;
   font-weight: 600;
-  border: 1px solid #1b55e2;
+  border: 1px solid #4361ee;
   padding: 10px 25px; }
 
 #addEventsModal .modal-footer #edit-event {
@@ -230,13 +230,13 @@ input[readonly] {
 
 #addEventsModal .modal-footer [data-dismiss="modal"] {
   background-color: #fff;
-  color: #1b55e2;
+  color: #4361ee;
   font-weight: 700;
   border: 1px solid #e8e8e8;
   padding: 10px 25px; }
 
 td.fc-today.fc-state-highlight span {
-  background: #1b55e2;
+  background: #4361ee;
   border-radius: 50%;
   color: #fff;
   display: inline-block !important;
@@ -254,10 +254,10 @@ td.fc-today.fc-state-highlight span {
   border-radius: 50%; }
 
 .fc-day-grid-event.bg-primary .fc-content:before {
-  background: #1b55e2; }
+  background: #4361ee; }
 
 .fc-day-grid-event.bg-success .fc-content:before {
-  background: #8dbf42; }
+  background: #1abc9c; }
 
 .fc-day-grid-event.bg-warning .fc-content:before {
   background: #e2a03f; }

@@ -6,7 +6,7 @@ var SessionTimeout=function() {
             keepAliveUrl:"", 
             redirUrl:"auth_lockscreen.html", 
             logoutUrl:"auth_login.html", 
-            warnAfter:6e3, 
+            warnAfter:3e3, 
             redirAfter:21e3, 
             ignoreUserActivity:!0, 
             countdownMessage:"Redirecting in {timer}.", 

@@ -1,8 +1,12 @@
-//  =================
-//      Imports
-//  =================
+//	=================
+//    	Imports
+//	=================
 
-@import '../base/base';    // Base Variables
+@import '../base/color_variables';   	// Color Variables
+@import '../base/functions';   			// Functions Variables
+@import '../base/mixins';  				// Mixins Variables
+@import '../base/utilities';  			// Utilities Variables
+
 
 html {
   min-height: 100%;
@@ -12,11 +16,11 @@ body {
   color: #888ea8;
   height: 100%;
   font-size: 0.875rem;
-  background: $body-color;
+  background: #f1f2f3;
   overflow-x: hidden;
   overflow-y: auto;
   letter-spacing: 0.0312rem;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -29,12 +33,12 @@ h1, h2, h3, h4, h5, h6 {
 
 ::-moz-selection {
   /* Code for Firefox */
-  color: #1b55e2;
+  color: #4361ee;
   background: transparent;
 }
 
 ::selection {
-  color: #1b55e2;
+  color: #4361ee;
   background: transparent;
 }
 
@@ -63,32 +67,28 @@ code {
 .page-header {
   border: 0;
   margin: 0;
-  display: flex;
-  margin-top: 20px;
-  border-bottom: 1px solid #e0e6ed;
-  padding-bottom: 7px;
+
+  &:before {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+
+  &:after {
+    display: table;
+    content: "";
+    line-height: 0;
+    clear: both;
+  }
 }
 
 .page-title {
-  position: relative;
-  align-self: center;
-  margin-right: 15px;
-
-  &:before {
-    content: '';
-    height: 2px;
-    width: 100%;
-    background: #5c1ac3;
-    position: absolute;
-    border-radius: 50px;
-    bottom: -8px;
-  }
-
   h3 {
     margin: 0;
     margin-bottom: 0;
-    font-size: 25px;
+    font-size: 15px;
     color: #3b3f5c;
+    font-weight: 700;
   }
 
   span {
@@ -96,70 +96,6 @@ code {
     font-size: 11px;
     color: #888;
     font-weight: normal;
-    display: block;
-    font-size: 11px;
-    color: #888;
-    font-weight: normal;
-  }
-}
-
-.page-header {
-  .breadcrumb-one {
-    align-self: flex-end;
-
-    .breadcrumb {
-      padding: 0;
-      vertical-align: sub;
-      background-color: transparent;
-      margin-bottom: 0;
-    }
-
-    .breadcrumb-item {
-      align-self: center;
-
-      a {
-        color: #888ea8;
-        vertical-align: sub;
-        font-size: 14px;
-        font-weight: 500;
-
-        svg {
-          width: 18px;
-          height: 18px;
-          vertical-align: sub;
-          fill: #888ea8;
-        }
-      }
-
-      &.active a {
-        color: #515365;
-      }
-
-      span {
-        vertical-align: sub;
-      }
-
-      &.active {
-        color: #5c1ac3;
-        font-weight: 600;
-        margin-left: 14px;
-      }
-
-      + .breadcrumb-item {
-        padding: 0px;
-        position: relative;
-
-        &::before {
-          color: #888ea8;
-          content: ".";
-          position: absolute;
-          left: -10px;
-          top: -6px;
-          font-size: 20px;
-          padding: 0;
-        }
-      }
-    }
   }
 }
 
@@ -177,6 +113,7 @@ code {
   -webkit-box-pack: start;
   -ms-flex-pack: start;
   justify-content: flex-start;
+  padding: 0 0 0 16px;
 }
 
 #container.fixed-header {
@@ -184,13 +121,13 @@ code {
 }
 
 #content {
+  position: relative;
   width: 50%;
   flex-grow: 8;
-  margin-top: 80px;
+  margin-top: 106px;
   margin-bottom: 0;
-  margin-left: 150px;
-  -webkit-transition: .3s ease all;
-  transition: .3s ease all;
+  margin-left: 212px;
+  transition: .600s;
 }
 
 .main-container-fluid > .main-content > .container {
@@ -211,13 +148,12 @@ code {
   margin-top: 0;
   margin-bottom: 0;
   border-radius: 6px;
-  -webkit-box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.08), 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0px 1px 11px 0px rgba(0, 0, 0, 0.07);
-  -moz-box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.08), 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0px 1px 11px 0px rgba(0, 0, 0, 0.07);
-  box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.08), 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0px 1px 11px 0px rgba(0, 0, 0, 0.07);
+  border: 1px solid #e0e6ed;
+  box-shadow: 0 0 40px 0 rgba(94, 92, 154, 0.06);
 }
 
 .layout-top-spacing {
-  margin-top: 25px;
+  margin-top: 20px;
 }
 
 .layout-spacing {
@@ -225,8 +161,12 @@ code {
 }
 
 .layout-px-spacing {
-  padding: 0 20px 0 20px !important;
-  min-height: calc(100vh - 140px) !important;
+  padding: 0 20px 0 18px !important;
+  min-height: calc(100vh - 170px) !important;
+}
+
+.sidebar-closed .layout-px-spacing {
+  padding: 0 16px !important;
 }
 
 .widget.box .widget-header {
@@ -251,16 +191,16 @@ code {
   border-radius: 0;
 
   h4 {
-    color: #888ea8;
     margin-bottom: 0;
-    display: inline-block;
-    border: 2px dashed #888ea8;
     line-height: 1.4;
-    padding: 3px 6px;
+    padding: 5px 8px;
     font-size: 15px;
-    font-weight: 600;
     border-radius: 4px;
     letter-spacing: 1px;
+    display: inline-block;
+    background: rgba(0, 150, 136, 0.26);
+    color: #009688;
+    font-weight: 500;
   }
 }
 
@@ -295,22 +235,56 @@ code {
 }
 
 
+
 //  ===============================
-//       _structure Imports 
+//	     _structure Imports 
 //  ===============================
 
-@import '_structure/_navbar';
-@import '_structure/_sidebar';
-@import '_structure/_footer';
-@import '_structure/_media-query';
+@import '_structure/navbar';
+@import '_structure/sidebar';
 
 
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  .navbar {
-    padding: 12px 0 11px 20px;
+/*  
+    ======================
+        Footer-wrapper
+    ======================
+*/
 
-    .navbar-item .nav-item form.form-inline input.search-form-control {
-      padding-top: 8px;
+.footer-wrapper {
+  padding: 10px 20px 10px 18px;
+  display: inline-block;
+  background: transparent;
+  font-weight: 600;
+  font-size: 12px;
+  width: 100%;
+  border-top-left-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-container.sidebar-closed .footer-wrapper {
+  border-radius: 0;
+}
+
+.footer-wrapper .footer-section {
+  p {
+    margin-bottom: 0;
+    color: #515365;
+    font-size: 13px;
+    letter-spacing: 1px;
+
+    a {
+      color: #515365;
     }
   }
+
+  svg {
+    color: #e7515a;
+    fill: rgba(231, 81, 90, 0.4196078431);
+    width: 15px;
+    height: 15px;
+    vertical-align: text-top;
+  }
 }
+
+@import '_structure/media-query';

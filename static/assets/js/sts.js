@@ -1,5 +1,6 @@
-
-
-// $("#example-basic").steps({
-//     cssClass: 'pill wizard'
-//     });
+//
+//
+$("#example-basic").steps({
+    cssClass: 'pill wizard',
+    enableFinishButton: false,
+    });

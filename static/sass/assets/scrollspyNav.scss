@@ -9,7 +9,6 @@
   right: -30px;
   top: 125px;
   width: 236px;
-  height: auto;
   border-left: 1px solid $m-color_3;
 
   .sidenav-header {
@@ -20,7 +19,7 @@
     p {
       font-weight: 600;
       font-size: 18px;
-      color: $white;
+      color: #fff;
       margin-bottom: 20px;
       background: $primary;
       text-align: center;
@@ -61,7 +60,7 @@
 #content > .container {
   display: flex;
   max-width: 58.333333% !important;
-  margin-left: 2px;
+  margin-left: 80px;
   padding: 0 16px !important;
 
   > .container {

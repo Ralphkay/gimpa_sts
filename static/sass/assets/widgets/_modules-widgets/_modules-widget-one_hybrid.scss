@@ -4,58 +4,66 @@
     ==================
 */
 
-.widget-one_hybrid {
-  background: $white;
+.widget.widget-one_hybrid {
+  background: #fff;
+  padding: 0;
+}
 
+.widget-one_hybrid {
   .widget-heading {
     padding: 20px 13px;
 
-    .w-icon {
-      display: inline-block;
-      padding: 7px 8px;
-      border-radius: 50%;
+    .w-title {
+      display: flex;
       margin-bottom: 15px;
     }
 
+    .w-icon {
+      display: inline-block;
+      align-self: center;
+      padding: 10px;
+      border-radius: 12px;
+      margin-right: 16px;
+    }
+
     svg {
-      height: 18px;
-      width: 18px;
+      width: 22px;
+      height: 22px;
     }
 
     .w-value {
-      font-size: 21px;
-      font-weight: 700;
+      font-size: 24px;
+      font-weight: 600;
       margin-bottom: 0;
+      align-self: center;
     }
 
     h5 {
       margin-bottom: 0;
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 600;
       color: $m-color_7;
     }
   }
 
-  &.widget-followers {
-    background: $l-primary;
-
-    .widget-heading .w-icon {
-      color: $primary;
-      border: 1px solid $primary;
-    }
+  .apexcharts-canvas svg {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
   }
 
-  &.widget-referral {
-    background: $l-danger;
+  &.widget-followers .widget-heading .w-icon {
+    color: $primary;
+    background: $l-primary;
+  }
 
-    .widget-heading .w-icon {
-      color: $danger;
-      border: 1px solid $danger;
-    }
+  &.widget-referral .widget-heading .w-icon {
+    color: $danger;
+    background-color: $l-danger;
   }
 
   &.widget-social {
     background: $l-info;
+    background: $primary;
 
     .widget-heading .w-icon {
       color: $info;
@@ -63,12 +71,8 @@
     }
   }
 
-  &.widget-engagement {
-    background: $l-success;
-
-    .widget-heading .w-icon {
-      color: $success;
-      border: 1px solid $success;
-    }
+  &.widget-engagement .widget-heading .w-icon {
+    background-color: $l-success;
+    color: $m-color_14;
   }
 }

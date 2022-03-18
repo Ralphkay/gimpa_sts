@@ -3,12 +3,15 @@
 //  =================
 
 @import '../../base/base';    // Base Variables
+
 .layout-px-spacing {
-    min-height: auto!important;
+  min-height: auto !important;
 }
+
 .ps--active-y > .ps__rail-y {
   z-index: 20;
 }
+
 #content > .container {
   max-width: 100% !important;
 }
@@ -18,18 +21,18 @@
 }
 
 #calendar {
-  height: calc(100vh - 335px);
+  height: calc(100vh - 301px);
 }
 
 .popover {
   border: none;
   border-radius: 5px;
-  border-color: $l-primary;
+  border-color: #eaf1ff;
   max-width: 338px;
   min-width: 270px;
-  background: $white;
+  background: #fff;
   box-shadow: none;
-  border: 1px solid $m-color_3;
+  border: 1px solid #e0e6ed;
   box-shadow: 0px 3px 11px 0px rgba(31, 45, 61, 0.1);
 }
 
@@ -37,14 +40,14 @@
   .arrow {
     &:after, &:before {
       display: none;
-      border-top-color: $primary;
+      border-top-color: #4361ee;
     }
   }
 
   .popover-header {
-    background-color: $m-color_9;
-    border-color: $l-primary;
-    color: $white;
+    background-color: #515365;
+    border-color: #eaf1ff;
+    color: #fff;
     padding: 11px 18px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -54,7 +57,7 @@
   }
 
   .popover-body {
-    color: $dark;
+    color: #3b3f5c;
     min-height: 90px;
     font-size: 13px;
     letter-spacing: 1px;
@@ -79,14 +82,14 @@
   position: relative;
   padding: 0 17px;
   font-size: 14px;
-  color: $dark;
+  color: #3b3f5c;
   cursor: pointer;
 
   &:before {
     content: '';
     position: absolute;
     padding: 0;
-    background: $black;
+    background: #000;
     border-radius: 2px;
     left: 0px;
     top: 5px;
@@ -95,36 +98,36 @@
   }
 
   &.label-primary:before {
-    background: $primary;
+    background: #4361ee;
   }
 
   &.label-warning:before {
-    background: $warning;
+    background: #e2a03f;
   }
 
   &.label-success:before {
-    background: $success;
+    background: #1abc9c;
   }
 
   &.label-danger:before {
-    background: $danger;
+    background: #e7515a;
   }
 }
 
 .radio-primary span.new-control-indicator {
-  border: 2px solid $primary;
+  border: 2px solid #4361ee;
 }
 
 .radio-warning span.new-control-indicator {
-  border: 2px solid $warning;
+  border: 2px solid #e2a03f;
 }
 
 .radio-success span.new-control-indicator {
-  border: 2px solid $success;
+  border: 2px solid #1abc9c;
 }
 
 .radio-danger span.new-control-indicator {
-  border: 2px solid $danger;
+  border: 2px solid #e7515a;
 }
 
 .fc-button-group {
@@ -142,40 +145,40 @@ button {
   }
 
   &.fc-today-button {
-    border: 1px solid $m-color_3;
+    border: 1px solid #e0e6ed;
     border-radius: 6px !important;
     padding: 6px 10px;
   }
 }
 
 .bg-primary {
-  background-color: $l-primary !important;
-  border-color: $l-primary !important;
-  color: $white;
+  background-color: #eaf1ff !important;
+  border-color: #ebedf2 !important;
+  color: #fff;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
 
 .bg-success {
-  background-color: $l-success !important;
-  border-color: $l-success !important;
-  color: $white;
+  background-color: #ddf5f0 !important;
+  border-color: #ebedf2 !important;
+  color: #fff;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
 
 .bg-warning {
-  background-color: $l-warning !important;
-  border-color: $l-warning !important;
-  color: $white;
+  background-color: #fff9ed !important;
+  border-color: #ebedf2 !important;
+  color: #fff;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
 
 .bg-danger {
-  background-color: $l-danger !important;
-  border-color: $l-danger !important;
-  color: $white;
+  background-color: #fff5f5 !important;
+  border-color: #ebedf2 !important;
+  color: #fff;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
 }
@@ -190,7 +193,7 @@ a {
 .fc-scroller {
   height: 100% !important;
   position: relative;
-  height: calc(100vh - 390px) !important;
+  height: calc(100vh - 362px) !important;
 
   &.fc-time-grid-container {
     height: calc(100vh - 420px) !important;
@@ -198,7 +201,7 @@ a {
 }
 
 .fc-agendaWeek-view .fc-scroller.fc-time-grid-container, .fc-agendaDay-view .fc-scroller.fc-time-grid-container {
-  height: calc(100vh - 435px) !important;
+  height: calc(100vh - 408px) !important;
 }
 
 /*
@@ -225,7 +228,7 @@ a {
     font-size: 18px;
     font-weight: 600;
     letter-spacing: 0px;
-    color: $dark;
+    color: #3b3f5c;
   }
 
   form {
@@ -235,7 +238,7 @@ a {
       margin-bottom: 5px;
       font-size: 14px;
       font-weight: 600;
-      color: $l-dark;
+      color: #e3e4eb;
     }
 
     .event-badge {
@@ -245,7 +248,7 @@ a {
         margin-bottom: 10px;
         font-size: 14px;
         font-weight: 600;
-        color: $l-dark;
+        color: #e3e4eb;
       }
     }
 
@@ -263,13 +266,13 @@ a {
 
 #calendar .form-control {
   margin-bottom: 20px;
-  color: $dark;
+  color: #3b3f5c;
   letter-spacing: 2px;
   font-weight: 600;
 }
 
 input[readonly] {
-  color: $dark;
+  color: #3b3f5c;
 }
 
 .modal-footer {
@@ -284,24 +287,24 @@ input[readonly] {
   }
 
   #add-e {
-    background-color: $primary;
-    color: $white;
+    background-color: #4361ee;
+    color: #fff;
     font-weight: 600;
-    border: 1px solid $primary;
+    border: 1px solid #4361ee;
     padding: 10px 25px;
   }
 
   #edit-event {
-    background-color: $m-color_14;
-    color: $white;
+    background-color: #009688;
+    color: #fff;
     font-weight: 600;
-    border: 1px solid $m-color_3;
+    border: 1px solid #e0e6ed;
     padding: 10px 25px;
   }
 
   [data-dismiss="modal"] {
-    background-color: $white;
-    color: $primary;
+    background-color: #fff;
+    color: #4361ee;
     font-weight: 700;
     border: 1px solid #e8e8e8;
     padding: 10px 25px;
@@ -309,9 +312,9 @@ input[readonly] {
 }
 
 td.fc-today.fc-state-highlight span {
-  background: $primary;
+  background: #4361ee;
   border-radius: 50%;
-  color: $white;
+  color: #fff;
   display: inline-block !important;
   font-size: 12px;
   font-weight: 700;
@@ -321,7 +324,7 @@ td.fc-today.fc-state-highlight span {
   .fc-content:before {
     content: '';
     height: 5px;
-    background: $black;
+    background: #000;
     width: 5px;
     position: absolute;
     left: -9px;
@@ -330,19 +333,19 @@ td.fc-today.fc-state-highlight span {
   }
 
   &.bg-primary .fc-content:before {
-    background: $primary;
+    background: #4361ee;
   }
 
   &.bg-success .fc-content:before {
-    background: $success;
+    background: #1abc9c;
   }
 
   &.bg-warning .fc-content:before {
-    background: $warning;
+    background: #e2a03f;
   }
 
   &.bg-danger .fc-content:before {
-    background: $danger;
+    background: #e7515a;
   }
 }
 

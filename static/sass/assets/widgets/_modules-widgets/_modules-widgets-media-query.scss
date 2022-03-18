@@ -4,31 +4,21 @@
     =====================
 */
 
-@media (max-width: 1199px) {
-  .widget.widget-activity-two .widget-heading {
-    margin-bottom: 21px;
-  }
+@media (max-width: 1249px) {
+  .widget-five {
+    .widget-content .meta-info .avatar {
+      &.more-group {
+        margin-right: -6px;
+      }
 
-  .widget-activity-two .mt-container {
-    position: relative;
-    height: 177px;
-  }
-}
+      margin-left: -4px;
+    }
 
-@media (max-width: 575px) {
-  .widget-card-four .w-content-img img {
-    height: 94px;
-  }
-
-  .widget-notification-one .noti-action a span {
-    display: none;
-  }
-
-  .widget-statistic .col-12:not(:last-child) .widget-one_hybrid {
-    margin-bottom: 40px;
+    &:hover .widget-content .meta-info .avatar.more-group {
+      margin-right: 6px;
+    }
   }
 }
-
 
 
 
@@ -37,34 +27,31 @@
         Media Object
     ====================
 */
-
-@media (min-width: 1200px) {
-  .table-responsive {
-    overflow-x: hidden;
-  }
-}
-
-@media (max-width: 1430px) and (min-width: 1200px) {
+@media (max-width: 1359px) and (min-width: 1200px) {
   /*
       ===========================
           Top Selling Product
       ===========================
   */
 
-  .widget-table-two .table .td-content img, .widget-table-three .table .td-content img {
-    display: block;
-  }
+  .widget-account-invoice-three {
+    .widget-heading {
+      padding: 24px 15px 63px 15px;
+    }
 
-  /*
-      ===========================
-          Top Selling Product
-      ===========================
-  */
-}
+    .widget-amount .w-a-info {
+      padding: 10px 9px;
+      width: 44%;
 
-@media (max-width: 767px) {
-  .widget-notification-two button {
-    display: none;
+      &.funds-received {
+        margin-right: 1px;
+      }
+    }
+
+    .invoice-list .inv-action a {
+      font-size: 12px;
+      padding: 5px 6px;
+    }
   }
 }
 
@@ -91,39 +78,21 @@
 
   /*
       ===========================
-          Top Selling Product
+              Wallet 
       ===========================
   */
 
-  .widget-table-two .table {
-    > {
-      thead > tr > th {
-        padding-right: 15px;
-      }
-
-      tbody > tr > td {
-        border-top: none;
-        padding-top: 0;
-        padding-bottom: 0;
-        padding-right: 12px;
-        padding-left: 12px;
-      }
+  .widget-account-invoice-three {
+    .widget-heading {
+      padding: 24px 22px 63px 22px;
     }
 
-    .td-content {
-      &.customer-name {
-        color: $m-color_9;
-        text-align: center;
-      }
+    .widget-amount .w-a-info {
+      padding: 12px 12px;
+    }
 
-      &.product-brand {
-        text-align: center;
-      }
-
-      img {
-        display: block;
-        margin: 0 auto 5px auto;
-      }
+    .widget-heading h5 {
+      font-size: 25px;
     }
   }
 
@@ -133,30 +102,23 @@
       ===========================
   */
 
-  .widget-table-three .table {
-    > {
-      thead > tr > th {
-        padding-right: 15px;
-      }
-
-      tbody > tr > td {
-        border-top: none;
-        padding-top: 0;
-        padding-bottom: 0;
-        padding-right: 12px;
-        padding-left: 12px;
-      }
+  .widget-table-three .table > {
+    thead > tr > th {
+      padding-right: 15px;
     }
 
-    .td-content {
-      &.product-name {
-        text-align: center;
-      }
-
-      img {
-        display: block;
-        margin: 0 auto 5px auto;
-      }
+    tbody > tr > td {
+      border-top: none;
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-right: 12px;
+      padding-left: 12px;
     }
+  }
+}
+
+@media (max-width: 1199px) {
+  .widget-activity-five .mt-container {
+    height: 205px;
   }
 }

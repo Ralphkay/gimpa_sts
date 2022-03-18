@@ -39,7 +39,7 @@
       margin-bottom: 24px;
       font-size: 16px;
       font-weight: 600;
-      color: #888ea8;
+      color: $m-color_6;
     }
 
     .timeline-post-content {
@@ -75,7 +75,7 @@
           border-bottom-width: 0;
           border-radius: 0;
           z-index: -1;
-          border-color: #ebedf2;
+          border-color: $m-color_2;
         }
 
         img {
@@ -98,7 +98,7 @@
       .meta-time-date {}
 
       svg {
-        color: #888ea8;
+        color: $m-color_6;
         vertical-align: text-bottom;
         width: 21px;
         height: 21px;
@@ -119,12 +119,12 @@
       }
 
       &:hover h6 {
-        color: #888ea8;
+        color: $m-color_6;
       }
 
       p.post-text {
         padding-left: 31px;
-        color: #888ea8;
+        color: $m-color_6;
         font-size: 14px;
         font-weight: 600;
         margin-bottom: 28px;

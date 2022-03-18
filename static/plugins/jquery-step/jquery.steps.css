@@ -100,11 +100,11 @@
     cursor: default; }
 
 .wizard > .steps .current a {
-  background: #1b55e2;
+  background: #4361ee;
   color: #fff;
   cursor: default; }
   .wizard > .steps .current a:hover, .wizard > .steps .current a:active {
-    background: #1b55e2;
+    background: #4361ee;
     color: #fff;
     cursor: default; }
 
@@ -171,7 +171,7 @@
     margin: 0 0.5em; }
 
 .wizard > .actions a {
-  background-color: #1b55e2;
+  background-color: #4361ee;
   color: #fff;
   display: block;
   padding: 0.5em 1em;
@@ -180,7 +180,7 @@
   -moz-border-radius: 5px;
   border-radius: 5px; }
   .wizard > .actions a:hover, .wizard > .actions a:active {
-    background-color: #1b55e2;
+    background-color: #4361ee;
     color: #fff;
     display: block;
     padding: 0.5em 1em;
@@ -288,10 +288,10 @@
   border-color: #fff; }
 
 .wizard > .steps .last.current.done a {
-  background: #1b55e2;
+  background: #4361ee;
   color: #fff; }
   .wizard > .steps .last.current.done a:hover, .wizard > .steps .last.current.done a:active {
-    background: #1b55e2;
+    background: #4361ee;
     color: #fff; }
 
 .wizard > .actions > ul > li {
@@ -377,8 +377,8 @@
   background-color: #f1f2f3; }
 
 .circle.wizard > .steps .current:not(.done) a .number, .circle.wizard > .steps .current:not(.done) a:hover .number, .circle.wizard > .steps .current:not(.done) a:active .number {
-  border-color: #1b55e2;
-  background-color: #1b55e2;
+  border-color: #4361ee;
+  background-color: #4361ee;
   color: #fff; }
 
 .circle.wizard > .steps .done a {
@@ -392,10 +392,10 @@
     color: #3b3f5c;
     font-weight: 600; }
   .circle.wizard > .steps .done a .number {
-    border-color: #1b55e2; }
+    border-color: #4361ee; }
 
 .circle.wizard > .steps ul li.done::after, .circle.wizard > .steps ul li.done::before {
-  background-color: #1b55e2; }
+  background-color: #4361ee; }
 
 .circle.wizard > .steps .last.current.done a {
   border: none;
@@ -468,10 +468,10 @@
     background-color: transparent;
     color: #3b3f5c; }
   .pill.wizard > .steps .done a .number {
-    border-color: #1b55e2; }
+    border-color: #4361ee; }
 
 .pill.wizard > .steps ul li.done:not(.last)::after, .pill.wizard > .steps ul li.done:not(.last)::before {
-  background-color: #1b55e2; }
+  background-color: #4361ee; }
 
 .pill.wizard > .steps .last.current.done a {
   border: 1px solid #bfc9d4;
@@ -564,9 +564,9 @@
       background-color: transparent;
       color: #3b3f5c; }
     .circle.vertical.wizard > .steps .done a .number {
-      border-color: #1b55e2; }
+      border-color: #4361ee; }
   .circle.vertical.wizard > .steps ul li.done::after, .circle.vertical.wizard > .steps ul li.done::before {
-    background-color: #1b55e2; }
+    background-color: #4361ee; }
   .circle.vertical.wizard > .steps .last.current.done a {
     border: none;
     background-color: transparent;
@@ -649,9 +649,9 @@
       background-color: transparent;
       color: #3b3f5c; }
     .pills.vertical.wizard > .steps .done a .number {
-      border-color: #1b55e2; }
+      border-color: #4361ee; }
   .pills.vertical.wizard > .steps ul li.done:not(.last)::after, .pills.vertical.wizard > .steps ul li.done:not(.last)::before {
-    background-color: #1b55e2; }
+    background-color: #4361ee; }
   .pills.vertical.wizard > .steps .last.current.done a {
     border: 1px solid #bfc9d4;
     background-color: transparent;

@@ -1,32 +1,65 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+
+from accounts.models import Student
+
+User = get_user_model()
 
 
+class StudentRegisterForm(UserCreationForm):
+    first_name = forms.CharField(max_length=100,
+                                 required=True,
+                                 widget=forms.TextInput(attrs={'placeholder': 'First Name',
+                                                               'class': 'form-control',
+                                                               }))
+    last_name = forms.CharField(max_length=100,
+                                required=True,
+                                widget=forms.TextInput(attrs={'placeholder': 'Last Name',
+                                                              'class': 'form-control',
+                                                              }))
 
-class RegisterForm(UserCreationForm):
+    password1 = forms.CharField(max_length=50,
+                                required=True,
+                                widget=forms.PasswordInput(attrs={'placeholder': 'Password',
+                                                                  'class': 'form-control',
+                                                                  'data-toggle': 'password',
+                                                                  'id': 'password',
+                                                                  }))
+    password2 = forms.CharField(max_length=50,
+                                required=True,
+                                widget=forms.PasswordInput(attrs={'placeholder': 'Confirm Password',
+                                                                  'class': 'form-control',
+                                                                  'data-toggle': 'password',
+                                                                  'id': 'password',
+                                                                  }))
 
-       
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email', 'username', 'password1', 'password2']
 
-       
-        class Meta:
-             
-            model = User
-            fields = ['email','username','password','password2']
-            choices = (
-                    ('100','Level 100'),
-                    ('200','Level 200'),
-                    ('300','Level 300'),
-                    ('400','Level 400'),
-                    ('600','Level 600'),
-                    ('700','Level 700'),
-                )
-           
+        widgets = {
+            'email': forms.TextInput(attrs={'placeholder': 'Email', 'class': 'form-control'}),
+            'username': forms.TextInput(attrs={'placeholder': 'Username', 'class': 'form-control'}),
 
-            widgets = {
-                'email':forms.TextInput(attrs={'placeholder':'Email'}),
-                'username':forms.TextInput(attrs={'placeholder':'Username'}),
-                'password':forms.PasswordInput(attrs={'placeholder':'••••••••'}),
-                'password2':forms.PasswordInput(attrs={'placeholder':'Confirm Password'}),
-                'level':forms.Select(attrs={'placeholder':'Level'}, choices=choices )
-            }
+        }
+
+    def save(self, commit=True):
+        user = super().save(False)
+        user.is_student = True
+        user.save()
+        return user
+
+
+class StudentProfileForm(forms.ModelForm):
+    class Meta:
+        model = Student
+        fields = [
+            'program', 'level'
+        ]
+
+        widgets = {
+            'level': forms.Select(attrs={'class': 'form-control'}),
+            'program': forms.Select(attrs={'class': 'form-control'}),
+            # 'user': forms.HiddenInput(),
+        }

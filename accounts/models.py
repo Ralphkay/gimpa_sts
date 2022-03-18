@@ -1,21 +1,41 @@
 from django.db import models
-from django.contrib.auth.models import User
-
+from django.contrib.auth.models import User, AbstractUser
+from django.urls import reverse
 
 # Create your models here.
-class Student(models.Model):
 
-    choices = (
-                    ('100','Level 100'),
-                    ('200','Level 200'),
-                    ('300','Level 300'),
-                    ('400','Level 400'),
-                    ('600','Level 600'),
-                    ('700','Level 700'),
-                )
-    user = models.OneToOneField(User,blank=False, null=False, on_delete=models.CASCADE)
-    program = models.ForeignKey('evaluation_app.Program', blank=False, null=False, on_delete=models.PROTECT)
-    level = models.CharField(max_length=30,choices=choices, null=False, blank=False)
-    
+from gimpa_sts import settings
+
+
+class User(AbstractUser):
+    email = models.EmailField(unique=True, db_index=True)
+    is_student = models.BooleanField(default=False)
+    is_qadmin = models.BooleanField(default=False)
+    is_hadmin = models.BooleanField(default=False)
+
+    USERNAME_FIELD = 'email'
+    EMAIL_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name', 'last_name']
+
     def __str__(self):
-        return self.user.username
+        return self.first_name + ' ' + self.last_name
+
+
+class Student(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, blank=False, null=False, on_delete=models.CASCADE)
+    choices = (
+        ('100', 'Level 100'),
+        ('200', 'Level 200'),
+        ('300', 'Level 300'),
+        ('400', 'Level 400'),
+        ('600', 'Level 600'),
+        ('700', 'Level 700'),
+    )
+    program = models.ForeignKey('evaluation_app.Program', blank=False, null=True, on_delete=models.SET_NULL)
+    level = models.CharField(max_length=30, choices=choices, null=False, blank=False)
+
+    def __str__(self):
+        return self.user.first_name + ' ' + self.user.last_name
+
+    # def get_absolute_url(self):
+    #     return reverse('student_profile', kwargs={'id':self.id})

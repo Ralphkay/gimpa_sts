@@ -13,24 +13,26 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
-
-
-from accounts.views import login_student, logout_student
+from accounts.views import login_student, logout_student, register_student, student_profile_create, login_qadmin
 
 urlpatterns = [
-    path("", login_student, name="login_student"),
-    path("", logout_student, name="logout_student"),
-    # path('login', include('accounts.urls')),
-    path('evaluation-module/', include('evaluation_app.urls')),
-    path('admin/', admin.site.urls),
+                  path('admin/', admin.site.urls),
+                  path('login-qadmin/', login_qadmin, name="login_qadmin"),
+                  path('register/', register_student, name="register_student"),
+                  path('accounts/', include('django.contrib.auth.urls')),
+                  path('qasa-admin/', include('qasa_app.urls')),
+                  path('', include('evaluation_app.urls')),
+                  path('profile/student/<int:pk>/create', student_profile_create, name="student_profile_create"),
 
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-# urlpatterns += [
-#     path('accounts/', include('django.contrib.auth.urls')),
-# ]
+                  path('__debug__/', include('debug_toolbar.urls')),
+
+              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+handler404 = "pages_app.views.page_not_found_view"

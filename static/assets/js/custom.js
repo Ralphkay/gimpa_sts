@@ -10,10 +10,6 @@ $('.scrollTop').click(function() {
 });
 
 
-
-
-
-
 $('.navbar .dropdown.notification-dropdown > .dropdown-menu, .navbar .dropdown.message-dropdown > .dropdown-menu ').click(function(e) {
     e.stopPropagation();
 });

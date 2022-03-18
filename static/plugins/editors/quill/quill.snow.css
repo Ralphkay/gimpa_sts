@@ -322,17 +322,17 @@
       display: table; }
   .ql-snow .ql-stroke {
     fill: none;
-    stroke: #1b55e2;
+    stroke: #4361ee;
     stroke-linecap: round;
     stroke-linejoin: round;
     stroke-width: 2; }
   .ql-snow .ql-stroke-miter {
     fill: none;
-    stroke: #1b55e2;
+    stroke: #4361ee;
     stroke-miterlimit: 10;
     stroke-width: 2; }
   .ql-snow .ql-fill, .ql-snow .ql-stroke.ql-fill {
-    fill: #1b55e2; }
+    fill: #4361ee; }
   .ql-snow .ql-empty {
     fill: none; }
   .ql-snow .ql-even {
@@ -534,7 +534,7 @@
     margin-right: 15px; }
   .ql-toolbar.ql-snow .ql-picker-label {
     border: 1px solid transparent;
-    color: #1b55e2; }
+    color: #4361ee; }
   .ql-toolbar.ql-snow .ql-picker-options {
     border: 1px solid transparent;
     box-shadow: rgba(0, 0, 0, 0.2) 0 2px 8px; }

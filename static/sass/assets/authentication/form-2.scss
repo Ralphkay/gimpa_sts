@@ -13,7 +13,7 @@ body {
   overflow: auto;
   margin: 0;
   padding: 0;
-  background-color: $white;
+  background-color: #fff;
 }
 
 .form-form {
@@ -45,13 +45,13 @@ body {
       display: block;
       width: 100%;
       padding: 25px;
-      background: $white;
+      background: #fff;
       text-align: center;
       border-radius: 15px;
       border: 1px solid $m-color_3;
-      -webkit-box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.0901960784), 0 1px 20px 0 rgba(0, 0, 0, 0.08), 0px 1px 11px 0px rgba(0, 0, 0, 0.06);
-      -moz-box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.0901960784), 0 1px 20px 0 rgba(0, 0, 0, 0.08), 0px 1px 11px 0px rgba(0, 0, 0, 0.06);
-      box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.0901960784), 0 1px 20px 0 rgba(0, 0, 0, 0.08), 0px 1px 11px 0px rgba(0, 0, 0, 0.06);
+      -webkit-box-shadow: 0 0.1px 0px rgba(0, 0, 0, 0.002), 0 0.2px 0px rgba(0, 0, 0, 0.003), 0 0.4px 0px rgba(0, 0, 0, 0.004), 0 0.6px 0px rgba(0, 0, 0, 0.004), 0 0.9px 0px rgba(0, 0, 0, 0.005), 0 1.2px 0px rgba(0, 0, 0, 0.006), 0 1.8px 0px rgba(0, 0, 0, 0.006), 0 2.6px 0px rgba(0, 0, 0, 0.007), 0 3.9px 0px rgba(0, 0, 0, 0.008), 0 7px 0px rgba(0, 0, 0, 0.01);
+      -moz-box-shadow: 0 0.1px 0px rgba(0, 0, 0, 0.002), 0 0.2px 0px rgba(0, 0, 0, 0.003), 0 0.4px 0px rgba(0, 0, 0, 0.004), 0 0.6px 0px rgba(0, 0, 0, 0.004), 0 0.9px 0px rgba(0, 0, 0, 0.005), 0 1.2px 0px rgba(0, 0, 0, 0.006), 0 1.8px 0px rgba(0, 0, 0, 0.006), 0 2.6px 0px rgba(0, 0, 0, 0.007), 0 3.9px 0px rgba(0, 0, 0, 0.008), 0 7px 0px rgba(0, 0, 0, 0.01);
+      box-shadow: 0 0.1px 0px rgba(0, 0, 0, 0.002), 0 0.2px 0px rgba(0, 0, 0, 0.003), 0 0.4px 0px rgba(0, 0, 0, 0.004), 0 0.6px 0px rgba(0, 0, 0, 0.004), 0 0.9px 0px rgba(0, 0, 0, 0.005), 0 1.2px 0px rgba(0, 0, 0, 0.006), 0 1.8px 0px rgba(0, 0, 0, 0.006), 0 2.6px 0px rgba(0, 0, 0, 0.007), 0 3.9px 0px rgba(0, 0, 0, 0.008), 0 7px 0px rgba(0, 0, 0, 0.01);
 
       h1 {
         font-size: 32px;
@@ -128,7 +128,7 @@ body {
         position: relative;
 
         &:focus {
-          border: 1px solid $black;
+          border: 1px solid #000;
         }
       }
 
@@ -212,12 +212,12 @@ body {
         -ms-transition: all 0.2s ease-in-out 0s;
         transition: all 0.2s ease-in-out 0s;
         color: $dark;
-        font-weight: 600;
+        font-weight: 500;
         font-size: 16px;
         padding: 13px 35px 13px 46px;
 
         &::-webkit-input-placeholder, &::-ms-input-placeholder, &::-moz-placeholder {
-          color: $m-color_5;
+          color: $m-color_4;
           font-size: 14px;
         }
       }

@@ -1,4 +1,8 @@
-$('#cd-simple').countdown('2020/10/10', function(event) {
+currentYear = new Date().getFullYear()
+increaseTwoYears = currentYear + 2;
+getFullFormat = `${increaseTwoYears}/10/10`;
+
+$('#cd-simple').countdown(getFullFormat, function(event) {
   var $this = $(this).html(event.strftime(''
     +'<div class="countdown">'+
         '<div class="clock-count-container">'+
@@ -26,7 +30,7 @@ $('#cd-simple').countdown('2020/10/10', function(event) {
     '</div>'));
 });
 
-$('#cd-circle').countdown('2020/10/10', function(event) {
+$('#cd-circle').countdown(getFullFormat, function(event) {
   var $this = $(this).html(event.strftime(''
     +'<div class="countdown">'+
         '<div class="clock-count-container">'+

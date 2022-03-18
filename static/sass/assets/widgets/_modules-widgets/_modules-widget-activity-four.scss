@@ -8,15 +8,36 @@
   padding-right: 0;
   padding-left: 0;
 
-  .mt-container {
-    position: relative;
-    height: 272px;
-    overflow: auto;
-    padding-right: 12px;
+  .widget-heading {
+    margin-bottom: 28px;
+    padding: 0 20px;
+
+    .w-icon {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+
+      a {
+        padding: 6px;
+        border-radius: 10px;
+        padding: 6px;
+        background: #c7e6e4 !important;
+        border: none;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+
+        svg {
+          color: $m-color_14;
+        }
+      }
+    }
   }
 
-  .widget-heading {
-    padding: 0 20px;
+  .mt-container {
+    position: relative;
+    height: 326px;
+    overflow: auto;
+    padding-right: 12px;
   }
 
   .widget-content {
@@ -26,7 +47,11 @@
   .timeline-line .item-timeline {
     display: flex;
     width: 100%;
-    margin-bottom: 12px;
+    padding: 8px 0;
+    transition: .5s;
+    position: relative;
+    border-radius: 6px;
+    cursor: pointer;
 
     .t-dot {
       position: relative;
@@ -36,18 +61,17 @@
         position: absolute;
         border-color: inherit;
         border-radius: 50%;
-        width: 8px;
-        height: 8px;
-        top: 5px;
+        width: 6px;
+        height: 6px;
+        top: 7px;
         left: 5px;
         transform: translateX(-50%);
-        border-color: #e0e6ed;
-        background: #bfc9d4;
+        border-color: $m-color_3;
+        background: $m-color_4;
         z-index: 1;
       }
 
       &:after {
-        content: '';
         position: absolute;
         border-color: inherit;
         border-width: 1px;
@@ -57,7 +81,7 @@
         height: 10px;
         left: 5px;
         transform: translateX(-50%);
-        border-color: #e0e6ed;
+        border-color: $m-color_3;
         width: 0;
         height: auto;
         top: 12px;
@@ -70,33 +94,33 @@
     }
 
     &.timeline-primary .t-dot:before {
-      background-color: #1b55e2;
-      border-color: rgb(164, 189, 247);
+      background: $l-primary;
+      border: 2px solid rgba(27, 85, 226, 0.33);
     }
 
     &.timeline-success .t-dot:before {
-      background-color: #009688;
-      border-color: rgb(154, 210, 205);
+      background-color: $l-success;
+      border: 2px solid rgb(154, 210, 205);
     }
 
     &.timeline-danger .t-dot:before {
-      background-color: #e7515a;
-      border-color: rgb(241, 172, 176);
+      background-color: $l-danger;
+      border: 2px solid rgb(241, 172, 176);
     }
 
     &.timeline-dark .t-dot:before {
-      background-color: #3b3f5c;
-      border-color: rgb(159, 163, 187);
+      background-color: $l-dark;
+      border: 2px solid rgb(159, 163, 187);
     }
 
     &.timeline-secondary .t-dot:before {
-      background: #1b55e2;
-      border-color: #c2d5ff;
+      background: $l-secondary;
+      border: 2px solid rgba(92, 26, 195, 0.35);
     }
 
     &.timeline-warning .t-dot:before {
-      background-color: #e2a03f;
-      border-color: rgb(222, 199, 165);
+      background-color: $l-warning;
+      border: 2px solid rgb(222, 199, 165);
     }
 
     &:last-child .t-dot:after {
@@ -109,34 +133,80 @@
       max-width: 100px;
       font-size: 12px;
       font-weight: 700;
-      color: #888ea8;
+      color: $m-color_6;
       align-self: center;
     }
 
     .t-text {
       align-self: center;
-      margin-left: 20px;
+      margin-left: 14px;
       display: flex;
       width: 100%;
       justify-content: space-between;
+      transition: .5s;
 
       p {
-        font-size: 12px;
         margin: 0;
-        color: #888ea8;
-        font-weight: 400;
+        font-size: 13px;
+        letter-spacing: 0;
+        font-weight: 600;
+        margin-bottom: 0;
+
+        a {
+          margin-bottom: 0;
+          font-size: 13px;
+          font-weight: 600;
+          color: $m-color_14;
+        }
       }
 
       span.badge {
         position: absolute;
-        right: 11px;
+        right: -1px;
         padding: 2px 4px;
-        font-size: 11px;
+        font-size: 10px;
         letter-spacing: 1px;
         opacity: 0;
-        font-weight: 400;
+        font-weight: 600;
         transform: none;
+        top: 6px;
       }
+    }
+
+    &.timeline-primary .t-text span.badge {
+      color: $primary;
+      border: 1px solid $primary;
+      background-color: $l-primary;
+    }
+
+    &.timeline-secondary .t-text span.badge {
+      color: $secondary;
+      border: 1px solid $secondary;
+      background-color: $l-secondary;
+    }
+
+    &.timeline-danger .t-text span.badge {
+      color: $danger;
+      border: 1px solid $danger;
+      background-color: $l-danger;
+    }
+
+    &.timeline-warning .t-text span.badge {
+      color: $warning;
+      border: 1px solid $warning;
+      background-color: $l-warning;
+    }
+
+    &.timeline-success .t-text span.badge {
+      color: $m-color_14;
+      border: 1px solid $m-color_14;
+      background-color: $l-success;
+    }
+
+    &.timeline-dark .t-text span.badge {
+      color: $dark;
+      border: 1px solid $dark;
+      background-color: $l-dark;
     }
 
     &:hover .t-text span.badge {
@@ -145,7 +215,7 @@
 
     .t-text p.t-time {
       text-align: right;
-      color: #888ea8;
+      color: $m-color_6;
       font-size: 10px;
     }
 
@@ -155,30 +225,51 @@
       max-width: 80px;
       font-size: 13px;
       font-weight: 600;
-      color: #acb0c3;
+      color: $l-dark;
       letter-spacing: 1px;
     }
   }
 
   .tm-action-btn {
     text-align: center;
-    padding-top: 20px;
+    padding-top: 19px;
 
     button {
       background: transparent;
       box-shadow: none;
       padding: 0;
-      color: #1b55e2;
-      font-weight: 600;
-      letter-spacing: 0.5px;
+      color: $m-color_23;
+      font-weight: 800;
+      letter-spacing: 0;
       border: none;
-      font-size: 15px;
+      font-size: 14px;
+
+      &:hover {
+        transform: translateY(0);
+      }
+
+      span {
+        margin-right: 6px;
+        display: inline-block;
+        transition: .5s;
+      }
+
+      &:hover span {
+        transform: translateX(-6px);
+      }
     }
 
     svg {
-      width: 15px;
-      height: 15px;
-      vertical-align: inherit;
+      width: 17px;
+      height: 17px;
+      vertical-align: sub;
+      color: $l-dark;
+      stroke-width: 2.5px;
+      transition: .5s;
+    }
+
+    button:hover svg {
+      transform: translateX(6px);
     }
   }
 }

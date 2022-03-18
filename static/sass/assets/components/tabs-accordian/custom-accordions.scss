@@ -14,7 +14,7 @@ h1, h2, h3, h4, h5, h6 {
 */
 
 .card {
-  border: 2px solid $m-color_3;
+  border: 1px solid $m-color_5;
   border-radius: 6px;
   margin-bottom: 4px;
 }
@@ -40,7 +40,7 @@ h1, h2, h3, h4, h5, h6 {
 
     &:not(.collapsed) {
       color: $primary;
-      border-bottom: 2px solid $m-color_3;
+      border-bottom: 1px solid $m-color_5;
       font-weight: 600;
     }
 
@@ -98,7 +98,7 @@ h1, h2, h3, h4, h5, h6 {
 */
 
 .no-outer-spacing {
-  border: 2px solid $m-color_3;
+  border: 1px solid $m-color_5;
   border-radius: 6px;
 
   .card {
@@ -117,7 +117,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     &:not(:last-child) {
-      border-bottom: 2px solid $m-color_3;
+      border-bottom: 1px solid $m-color_5;
     }
   }
 

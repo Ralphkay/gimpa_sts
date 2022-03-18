@@ -4,7 +4,9 @@
 
 @import '../../../base/base';    // Base Variables
 
-
+.nav-tabs .dropdown:not(.custom-dropdown-icon):not(.custom-dropdown) .dropdown-menu.show, .nav-pills .dropdown:not(.custom-dropdown-icon):not(.custom-dropdown) .dropdown-menu.show {
+  top: 36px !important;
+}
 .nav-tabs {
   svg {
     width: 20px;

@@ -28,7 +28,7 @@
   .filtered-list-search form > div svg {
     position: absolute;
     right: 11px;
-    color: #acb0c3;
+    color: #e3e4eb;
     height: 36px;
     width: 19px;
     top: 4px; }
@@ -37,9 +37,10 @@
   padding: 6px 27px 6px 15px;
   color: #d3d3d3;
   border: none;
-  box-shadow: 0px 2px 4px rgba(126, 142, 177, 0.12);
   width: 100% !important;
-  background-color: #fff; }
+  background-color: #fff;
+  border: 1px solid #e0e6ed;
+  box-shadow: 0 0 40px 0 rgba(94, 92, 154, 0.06); }
   .filtered-list-search form input:focus {
     border-color: #d3d3d3; }
   .filtered-list-search form input::-webkit-input-placeholder {
@@ -57,7 +58,18 @@
 
 .searchable-container .switch {
   text-align: right; }
-  .searchable-container .switch .view-grid, .searchable-container .switch .view-list {
+  .searchable-container .switch .view-grid {
+    padding: 10px;
+    background: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #515365;
+    width: 43px;
+    height: 41px;
+    fill: rgba(0, 23, 55, 0.08);
+    border: 1px solid #e0e6ed;
+    box-shadow: 0 0 40px 0 rgba(94, 92, 154, 0.06); }
+  .searchable-container .switch .view-list {
     padding: 10px;
     background: #fff;
     border-radius: 5px;
@@ -66,7 +78,9 @@
     box-shadow: 0px 2px 4px rgba(126, 142, 177, 0.12);
     width: 43px;
     height: 41px;
-    fill: rgba(0, 23, 55, 0.08); }
+    fill: rgba(0, 23, 55, 0.08);
+    border: 1px solid #e0e6ed;
+    box-shadow: 0 0 40px 0 rgba(94, 92, 154, 0.06); }
 
 .searchable-container #btn-add-contact {
   padding: 9px;
@@ -74,11 +88,12 @@
   border-radius: 5px;
   cursor: pointer;
   margin-right: 35px;
-  box-shadow: 0px 2px 4px rgba(126, 142, 177, 0.12);
   width: 43px;
   height: 41px;
-  color: #1b55e2;
-  fill: rgba(27, 85, 226, 0.239216); }
+  color: #4361ee;
+  fill: rgba(27, 85, 226, 0.239216);
+  border: 1px solid #e0e6ed;
+  box-shadow: 0 0 40px 0 rgba(94, 92, 154, 0.06); }
   .searchable-container #btn-add-contact:hover {
     color: #515365;
     fill: rgba(0, 23, 55, 0.08); }
@@ -121,7 +136,7 @@
   font-weight: 600; }
 
 .searchable-container .add-contact-box .add-contact-content .contact-name #c-name::-webkit-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-email #c-email::-webkit-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-occupation #c-occupation::-webkit-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-phone #c-phone::-webkit-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-location #c-location::-webkit-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-name #c-name::-ms-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-email #c-email::-ms-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-occupation #c-occupation::-ms-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-phone #c-phone::-ms-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-location #c-location::-ms-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-name #c-name::-moz-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-email #c-email::-moz-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-occupation #c-occupation::-moz-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-phone #c-phone::-moz-input-placeholder, .searchable-container .add-contact-box .add-contact-content .contact-location #c-location::-moz-input-placeholder {
-  color: #acb0c3;
+  color: #e3e4eb;
   font-weight: 600; }
 
 .searchable-container .add-contact-box .add-contact-content .contact-name, .searchable-container .add-contact-box .add-contact-content .contact-email, .searchable-container .add-contact-box .add-contact-content .contact-occupation, .searchable-container .add-contact-box .add-contact-content .contact-phone {
@@ -137,7 +152,7 @@
   padding: 0 15px 14px 15px; }
   .searchable-container .modal-footer .btn[data-dismiss="modal"] {
     background-color: #fff;
-    color: #1b55e2;
+    color: #4361ee;
     font-weight: 700;
     border: 1px solid #e8e8e8;
     padding: 10px 25px; }
@@ -146,10 +161,10 @@
       font-weight: 600;
       margin-right: 8px; }
   .searchable-container .modal-footer .btn#btn-add {
-    background-color: #1b55e2;
+    background-color: #4361ee;
     color: #fff;
     font-weight: 600;
-    border: 1px solid #1b55e2;
+    border: 1px solid #4361ee;
     padding: 10px 25px; }
   .searchable-container .modal-footer .btn#btn-edit {
     background-color: #009688;
@@ -159,7 +174,7 @@
     padding: 10px 25px; }
 
 .searchable-container .switch .view-grid:hover, .searchable-container .switch .view-list:hover, .searchable-container .switch .active-view {
-  color: #1b55e2;
+  color: #4361ee;
   fill: rgba(27, 85, 226, 0.239216); }
 
 .searchable-container .searchable-items.list .items.items-header-section h4 {
@@ -190,7 +205,9 @@
   width: 100%;
   min-width: 767px;
   transition: all 0.35s ease;
-  box-shadow: 0px 2px 4px rgba(126, 142, 177, 0.12); }
+  /* box-shadow: 0px 2px 4px rgba(126,142,177,0.12); */
+  border: 1px solid #e0e6ed;
+  box-shadow: 0 0 40px 0 rgba(94, 92, 154, 0.06); }
 
 .searchable-container .searchable-items.list .items:not(.items-header-section) .item-content:hover {
   -webkit-transform: translateY(0) scale(1.03);
@@ -244,7 +261,7 @@
 
 .searchable-container .searchable-items.list .items .action-btn {
   font-weight: 600;
-  color: #acb0c3; }
+  color: #e3e4eb; }
   .searchable-container .searchable-items.list .items .action-btn .delete-multiple {
     margin-right: 5px;
     cursor: pointer;
@@ -252,7 +269,7 @@
     width: 20px;
     fill: rgba(27, 85, 226, 0.239216); }
     .searchable-container .searchable-items.list .items .action-btn .delete-multiple:hover {
-      color: #1b55e2; }
+      color: #4361ee; }
   .searchable-container .searchable-items.list .items .action-btn .edit, .searchable-container .searchable-items.list .items .action-btn .delete {
     margin-right: 5px;
     cursor: pointer;
@@ -260,7 +277,7 @@
     width: 20px;
     fill: rgba(27, 85, 226, 0.239216); }
   .searchable-container .searchable-items.list .items .action-btn .edit:hover, .searchable-container .searchable-items.list .items .action-btn .delete:hover {
-    color: #1b55e2; }
+    color: #4361ee; }
 
 .searchable-items.grid {
   display: -ms-flexbox;
@@ -291,9 +308,9 @@
   .searchable-container .searchable-items.grid .items .item-content {
     background-color: #fff;
     padding: 13px 18px;
-    -webkit-box-shadow: 0px 2px 4px rgba(126, 142, 177, 0.12);
-    box-shadow: 0px 2px 4px rgba(126, 142, 177, 0.12);
-    border-radius: 6px; }
+    border-radius: 6px;
+    border: 1px solid #e0e6ed;
+    box-shadow: 0 0 40px 0 rgba(94, 92, 154, 0.06); }
   .searchable-container .searchable-items.grid .items.items-header-section {
     display: none; }
   .searchable-container .searchable-items.grid .items .user-profile {
@@ -354,7 +371,7 @@
       margin-right: 10px; }
   .searchable-container .searchable-items.grid .items .action-btn {
     font-weight: 600;
-    color: #acb0c3;
+    color: #e3e4eb;
     text-align: center;
     margin: 20px 0; }
     .searchable-container .searchable-items.grid .items .action-btn .edit, .searchable-container .searchable-items.grid .items .action-btn .delete {
@@ -364,7 +381,7 @@
       width: 20px;
       fill: rgba(27, 85, 226, 0.239216); }
     .searchable-container .searchable-items.grid .items .action-btn .edit:hover, .searchable-container .searchable-items.grid .items .action-btn .delete:hover {
-      color: #1b55e2; }
+      color: #4361ee; }
 
 @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
   /* IE10+ CSS styles go here */
