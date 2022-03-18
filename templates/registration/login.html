@@ -44,7 +44,7 @@
                           <p>Please login to see this page.</p>
                         {% endif %}
                       {% endif %}
-                          <form class="text-left" method="post" action="{% url 'login' %}">
+                          <form class="text-left" method="post" action="{% if admin %}{% url 'login_qadmin' %}{% else %}{% url 'login' %}{% endif %}">
                             {%csrf_token %}
                             <div class="form">
 
