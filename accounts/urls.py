@@ -2,7 +2,7 @@ from django.urls import path
 #
 # from .views import login_student, logout_student, register_student
 #
-from accounts.views import student_profile
+
 
 # urlpatterns = [
 #     path('profile/<pk:pk>', student_profile, name="student_profile"),
