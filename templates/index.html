@@ -198,6 +198,7 @@
 
                 <li class="nav-item dropdown user-profile-dropdown">
                     <a href=" {% static 'javascript:void(0);' %} " class="nav-link dropdown-toggle user" id="userProfileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <span class="text-light">{{ request.user.email }}</span>
                         <img src=" https://avatar.oxro.io/avatar.svg?name={{request.user.username}}&background=6ab04c&color=000 " alt="avatar">
                     </a>
                     <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">

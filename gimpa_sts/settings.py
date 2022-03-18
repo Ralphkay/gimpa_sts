@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
 # import dj_database_url
-# import django_heroku
+import django_heroku
 
 from pathlib import Path
 
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.postgres',
     # "debug_toolbar",
-    # 'whitenoise.runserver_nostatic',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'accounts',
     'evaluation_app',
@@ -51,7 +51,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     # "debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.middleware.security.SecurityMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -176,4 +176,5 @@ INTERNAL_IPS = [
 ]
 
 # Activate Django-Heroku.
-# django_heroku.settings(locals())
+# django_heroku.settings(locals())import django_heroku
+django_heroku.settings(locals())
