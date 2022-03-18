@@ -11,8 +11,6 @@ urlpatterns = [
 
     path('', analytic_dashboard, name='analytic_dashboard'),
 
-
-
     path('courses/', create_course, name='create_course'),
     path('courses/<slug:slug>/', view_course, name='view_course'),
     path('courses/<slug:slug>/edit', edit_course, name='edit_course'),
@@ -27,17 +25,14 @@ urlpatterns = [
     path('department/<int:pk>/delete', delete_department, name='delete_department'),
     path('departments/<slug:slug>/edit', edit_department, name='edit_department'),
 
-
     path('facilitators/', view_facilitators, name='view_facilitators'),
     path('facilitators/create', add_facilitator, name='add_facilitator'),
     path('facilitators/<int:pk>/edit', edit_facilitator, name='edit_facilitator'),
     path('facilitators/<int:pk>/delete', delete_facilitator, name='delete_facilitator'),
 
-
     path('academic-years/', view_academic_years, name='view_academic_years'),
     path('academic-years/<int:pk>', delete_academic_year, name='delete_academic_year'),
     path('academic-years/create/', create_academic_year, name='create_academic_year'),
-
 
     path('schools/', view_schools, name='view_schools'),
     path('schools/create/', create_school, name='create_school'),
