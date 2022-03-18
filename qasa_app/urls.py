@@ -42,8 +42,8 @@ urlpatterns = [
     path('programs/<slug:slug>/edit', edit_program, name='edit_program'),
     path('view_schools/programs/create', create_program, name='create_program'),
 
-    path('courses/<slug:slug>/', view_course, name='view_course'),
     path('view_schools/courses/', create_course, name='create_course'),
+    path('courses/<slug:slug>/', view_course, name='view_course'),
     path('view_schools/courses/<slug:slug>/edit', edit_course, name='edit_course'),
     path('view_schools/courses/<slug:slug>/delete', delete_course, name='delete_course'),
 
