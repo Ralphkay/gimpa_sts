@@ -62,7 +62,7 @@ def login_qadmin(request):
                }
 
     if request.method == "POST":
-        username = request.POST['email']
+        username = request.POST['username']
         password = request.POST['password']
 
         # this would have to become a custom user (e.g. student)
