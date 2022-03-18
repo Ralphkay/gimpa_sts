@@ -58,7 +58,6 @@ def login_qadmin(request):
     context = {'page_title': page_title,
                'bg':'bg-dark',
                'admin':True
-
                }
 
     if request.method == "POST":
