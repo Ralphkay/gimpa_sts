@@ -628,13 +628,19 @@ def view_schools(request):
 @allowed_groups(permitted_groups=['qasa'])
 def create_school(request):
     form = SchoolForm()
+    context = {'form': form}
+
     if request.method == 'POST':
         form = SchoolForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, f"Record saved successfully.")
             return redirect('view_schools')
-    context = {'form': form}
+        else:
+            form = SchoolForm(request.POST)
+            context['errors'] = form.errors.as_json()
+            return render(request, 'qasa_app/school/create_school.html', context)
+
     return render(request, 'qasa_app/school/create_school.html', context)
 
 

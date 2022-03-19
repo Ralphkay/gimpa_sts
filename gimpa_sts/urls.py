@@ -23,12 +23,12 @@ from accounts.views import login_student, logout_student, register_student, stud
 
 urlpatterns = [
                   path('accounts/', include('django.contrib.auth.urls')),
+                  path('admin/', admin.site.urls),
                   path('login-qadmin/', login_qadmin, name="login_qadmin"),
                   path('register/', register_student, name="register_student"),
                   path('', include('evaluation_app.urls')),
                   path('profile/student/<int:pk>/create', student_profile_create, name="student_profile_create"),
                   path('evaluation-admin/', include('qasa_app.urls')),
-                  path('admin/', admin.site.urls),
 
                   # path('__debug__/', include('debug_toolbar.urls')),
 

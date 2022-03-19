@@ -25,6 +25,8 @@ class SchoolForm(forms.ModelForm):
         }
 
 
+
+
 class CreateDepartmentForm(forms.ModelForm):
     class Meta:
         model = Department
