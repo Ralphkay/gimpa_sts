@@ -25,8 +25,6 @@ class SchoolForm(forms.ModelForm):
         }
 
 
-
-
 class CreateDepartmentForm(forms.ModelForm):
     class Meta:
         model = Department
@@ -59,13 +57,14 @@ class CreateCourseForm(forms.ModelForm):
     class Meta:
         model = Course
         fields = [
-            'name', 'program', 'course_code', 'level', 'description', 'facilitator'
+            'name', 'program', 'course_code', 'course_group', 'level', 'description', 'facilitator'
         ]
 
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Course'}),
             'program': forms.Select(attrs={'class': 'form-control'}),
             'course_code': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'GSOT034'}),
+            'course_group': forms.Select(attrs={'class': 'form-control'}),
             'level': forms.Select(attrs={'class': 'form-control'}),
             'description': forms.Textarea(
                 attrs={'class': 'form-control', 'placeholder': 'Course description'}),

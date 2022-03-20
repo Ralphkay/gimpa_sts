@@ -9,7 +9,9 @@ from .views import evaluation_reports_generated_list, view_schools, evaluation_r
 
 urlpatterns = [
 
-    path('', analytic_dashboard, name='analytic_dashboard'),
+
+
+    path('dashboard/', analytic_dashboard, name='analytic_dashboard'),
 
     path('courses/', create_course, name='create_course'),
     path('courses/<slug:slug>/', view_course, name='view_course'),

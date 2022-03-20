@@ -205,34 +205,32 @@ class Course(models.Model):
         ('400', 'Level 400'),
         ('500', 'Level 500'),
         ('600', 'Level 600'),
+        ('700', 'Level 700'),
+        ('800', 'Level 800'),
+    )
+
+    lecture_group = (
+        ('day', 'Day'),
+        ('evening', 'Evening'),
+        ('weekend', 'Weekend'),
     )
 
     name = models.CharField(max_length=250)
     course_code = models.CharField(max_length=10)
     program = models.ForeignKey('Program', on_delete=models.CASCADE)
     level = models.CharField(default='', max_length=15, choices=choices)
+    course_group = models.CharField(default='', max_length=15, choices=lecture_group)
     facilitator = models.ForeignKey('Facilitator', on_delete=models.CASCADE)
-    slug = models.SlugField(max_length=255, null=True, blank=True, unique=True)
+    slug = models.SlugField(unique=True, db_index=True, default=uuid.uuid4(), blank=True, null=True)
     description = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return self.name + " " + self.course_code + " (" + str(self.level) + ")"
+        return self.name + " " + self.course_code + " (" + str(self.level) + ")" + '–' + self.course_group.upper()
 
     def get_absolute_url(self):
         return reverse('view_course', kwargs={'slug': self.slug})
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        slug_value = self.name + '-' + str(self.course_group)
+        self.slug = slugify(slug_value)
         super().save(*args, **kwargs)
-
-# class EvaluationAggregatorReport(models.Model):
-#     curriculum_stats =
-
-# Signals
-# @receiver(post_save, sender=Evaluation)
-# def evaluation_created(sender, instance, created, *args, **kwargs):
-#     if created:
-#         EvaluationSubmission.objects.create(evaluationInfo=instance)
-#         print("Evaluation Submission form created successfully")
-#     else:
-#         print("Evaluation Submission form failed to create")

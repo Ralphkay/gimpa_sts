@@ -30,12 +30,17 @@ class Student(models.Model):
         ('400', 'Level 400'),
         ('600', 'Level 600'),
         ('700', 'Level 700'),
+        ('800', 'Level 800'),
+    )
+
+    lecture_group = (
+        ('day', 'Day'),
+        ('evening', 'Evening'),
+        ('weekend', 'Weekend'),
     )
     program = models.ForeignKey('evaluation_app.Program', blank=False, null=True, on_delete=models.SET_NULL)
+    course_group = models.CharField(max_length=30, choices=lecture_group,default="day", null=False, blank=False)
     level = models.CharField(max_length=30, choices=choices, null=False, blank=False)
 
     def __str__(self):
         return self.user.first_name + ' ' + self.user.last_name
-
-    # def get_absolute_url(self):
-    #     return reverse('student_profile', kwargs={'id':self.id})

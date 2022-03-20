@@ -16,15 +16,17 @@ User = get_user_model()
 
 
 @login_required
-@allowed_groups(permitted_groups=['student','qasa'])
+@allowed_groups(permitted_groups=['student'])
 def evaluations(request):
     student = get_object_or_404(Student, user=request.user.id)
     # user = User.objects.get(id=request.user.id)
     # print("student =>", user, student)
     # student = Student.objects.filter(user=request.user.id)
-    courses_assigned_to_student_by_level = Course.objects.filter(program=student.program, level=student.level)
+    courses_assigned_to_student_by_level = Course.objects.filter(program=student.program, level=student.level,
+                                                                 course_group=student.course_group)
     evaluated_submissions = EvaluationSubmission.objects.filter(submitter=student).values_list('evaluationInfo')
-    evaluation_set = Evaluation.objects.filter(Q(course__in=courses_assigned_to_student_by_level)).exclude(id__in=evaluated_submissions)
+    evaluation_set = Evaluation.objects.filter(Q(course__in=courses_assigned_to_student_by_level))\
+        .exclude(id__in=evaluated_submissions)
     #
     # print(evaluation_set)
     #
@@ -79,7 +81,7 @@ def edit_evaluation(request, pk):
 
 
 @login_required
-@allowed_groups(permitted_groups=['student','qasa'])
+@allowed_groups(permitted_groups=['student'])
 def evaluation(request, slug):
     # fetch all yet to be evaluated courses filtered by student's course and submissions
     # (meaning ones he may not have submitted yet)
@@ -92,7 +94,6 @@ def evaluation(request, slug):
     print(evaluation_instance)
     # Get instance of student
     student = get_object_or_404(Student, user=request.user)
-    print(student)
     # Initialize evaluation form
     evaluation_form = EvaluationForm(instance=evaluation_submission,
                                      initial={'submitter': student, 'evaluationInfo': evaluation_instance})

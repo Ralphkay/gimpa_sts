@@ -74,9 +74,9 @@ def login_qadmin(request):
             print('login error')
             context['login_error'] = 'Username or password is incorrect.'
             messages.error(request, 'Login error, credentials invalid')
-            return render(request, 'registration/login.html', context)
+            return render(request, 'accounts/auth/auth_login_boxed.html', context)
 
-    return render(request, 'registration/login.html', context)
+    return render(request, 'accounts/auth/auth_login_boxed.html', context)
 
 
 def login_student(request):

@@ -55,11 +55,12 @@ class StudentProfileForm(forms.ModelForm):
     class Meta:
         model = Student
         fields = [
-            'program', 'level'
+            'program', 'course_group', 'level'
         ]
 
         widgets = {
             'level': forms.Select(attrs={'class': 'form-control'}),
+            'course_group': forms.Select(attrs={'class': 'form-control'}),
             'program': forms.Select(attrs={'class': 'form-control'}),
             # 'user': forms.HiddenInput(),
         }

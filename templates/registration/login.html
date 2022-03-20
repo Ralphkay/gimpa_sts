@@ -86,12 +86,9 @@
 {#                                </div>#}
 
                                 <p class="signup-link">Not registered ? <a href="{% url 'register_student' %}">Create an account</a></p>
-                                {% if admin %}
-                                    <small><a href="{% url 'login' %}" class="text-muted">Student?</a></small>
-                                {% else %}
+
                                     <small><a href="{% url 'login_qadmin' %}" class="text-muted">Admin?</a></small>
 
-                                {% endif %}
 
                             </div>
                         </form>

@@ -1,4 +1,5 @@
 from django.http import HttpResponseBadRequest, HttpResponse
+from django.shortcuts import redirect
 
 
 def only_admins(view_func):
@@ -19,6 +20,10 @@ def allowed_groups(permitted_groups=[]):
                 group = request.user.groups.all()[0].name
                 if group in permitted_groups:
                     return view_func(request, *args, **kwargs)
+                if group == 'qasa':
+                    return redirect('analytic_dashboard')
+                elif group == 'student':
+                    return redirect('evaluations')
                 else:
                     return HttpResponse('401 Unauthorized: You are not authorised to view this page.', status=401)
             else:
