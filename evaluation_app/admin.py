@@ -16,10 +16,17 @@ class EvaluationAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ['course']}
 
 
+class CourseAdmin(admin.ModelAdmin):
+    list_display = ['name', 'facilitator']
+    list_filter = ['name', 'facilitator']
+
+    prepopulated_fields = {'slug': ['name','course_group']}
+
+
 admin.site.register(Evaluation)
 admin.site.register(EvaluationSubmission)
 admin.site.register(School)
-admin.site.register(Course)
+admin.site.register(Course, CourseAdmin)
 admin.site.register(Program)
 admin.site.register(Facilitator)
 

@@ -1,5 +1,7 @@
 import uuid
 from django.utils import timezone
+from django.db import IntegrityError
+from django.core.exceptions import ValidationError
 
 from django.contrib.auth.models import User
 from django.db import models
@@ -25,7 +27,7 @@ class Evaluation(models.Model):
     course = models.OneToOneField('Course', on_delete=models.CASCADE)
     description = models.CharField(max_length=150, blank=True, null=True)
     aggregated_score_computed_value = models.FloatField(default=0, editable=False)
-    slug = models.SlugField(unique=True, db_index=True, default=uuid.uuid4(), blank=True, null=True)
+    slug = models.SlugField(unique=True, default=uuid.uuid4)
     deadline = models.DateTimeField(null=False, blank=False)
 
     class Meta:
@@ -102,7 +104,7 @@ class EvaluationSubmission(models.Model):
     environment_air_conditioning = models.IntegerField(choices=FeedbackChoices.choices, default=None)
     environment_secretariat = models.IntegerField(choices=FeedbackChoices.choices, default=None)
 
-    slug = models.SlugField(blank=True, null=True, unique=True, default=uuid.uuid4(), db_index=True)
+    slug = models.SlugField(unique=True, default=uuid.uuid4)
     submitter = models.ForeignKey(Student, blank=True, null=True, on_delete=models.PROTECT)
     is_evaluated = models.BooleanField(blank=False, null=False, default=False)
 
@@ -221,7 +223,7 @@ class Course(models.Model):
     level = models.CharField(default='', max_length=15, choices=choices)
     course_group = models.CharField(default='', max_length=15, choices=lecture_group)
     facilitator = models.ForeignKey('Facilitator', on_delete=models.CASCADE)
-    slug = models.SlugField(unique=True, db_index=True, default=uuid.uuid4(), blank=True, null=True)
+    slug = models.SlugField(unique=True, default=uuid.uuid4)
     description = models.TextField(blank=True, null=True)
 
     def __str__(self):
@@ -230,7 +232,18 @@ class Course(models.Model):
     def get_absolute_url(self):
         return reverse('view_course', kwargs={'slug': self.slug})
 
+    def clean(self):
+
+        exists = Course.objects.filter(name=self.name, level=self.level, course_group=self.course_group,
+                                       facilitator=self.facilitator)
+        if exists:
+            raise ValidationError({'name': "Course with same specific details exists"})
+
     def save(self, *args, **kwargs):
+        # try:
+        self.full_clean()
         slug_value = self.name + '-' + str(self.course_group)
         self.slug = slugify(slug_value)
-        super().save(*args, **kwargs)
+        return super().save(*args, **kwargs)
+    # except IntegrityError as e:
+    #     raise ValidationError('something')

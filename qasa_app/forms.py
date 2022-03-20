@@ -54,6 +54,7 @@ class CreateProgramForm(forms.ModelForm):
 
 
 class CreateCourseForm(forms.ModelForm):
+
     class Meta:
         model = Course
         fields = [
@@ -69,6 +70,7 @@ class CreateCourseForm(forms.ModelForm):
             'description': forms.Textarea(
                 attrs={'class': 'form-control', 'placeholder': 'Course description'}),
             'facilitator': forms.Select(attrs={'class': 'form-control'}),
+            # 'slug':forms.HiddenInput()
         }
 
 
