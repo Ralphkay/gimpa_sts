@@ -28,7 +28,7 @@ urlpatterns = [
                   path('register', register_student, name="register_student"),
                   path('login-qadmin', login_qadmin, name="login_qadmin"),
                   path('evaluation-admin/', include('qasa_app.urls')),
-                  # path('profile/student/<int:pk>/create', student_profile_create, name="student_profile_create"),
+                  path('profile/student/<int:pk>/create', student_profile_create, name="student_profile_create"),
 
                   # path('__debug__/', include('debug_toolbar.urls')),
 
