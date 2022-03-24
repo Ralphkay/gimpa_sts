@@ -1,4 +1,6 @@
 import uuid
+import random
+
 from django.utils import timezone
 from django.db import IntegrityError
 from django.core.exceptions import ValidationError
@@ -233,17 +235,22 @@ class Course(models.Model):
         return reverse('view_course', kwargs={'slug': self.slug})
 
     def clean(self):
-
         exists = Course.objects.filter(name=self.name, level=self.level, course_group=self.course_group,
                                        facilitator=self.facilitator)
-        if exists:
-            raise ValidationError({'name': "Course with same specific details exists"})
+        slug_value = self.name + '-' + str(self.course_group) + '-' + str(uuid.uuid4())
+
+        # if exists:
+        #     raise ValidationError({'name': "Course with same specific details exists"})
 
     def save(self, *args, **kwargs):
         # try:
+
+        count: int = 0
         self.full_clean()
-        slug_value = self.name + '-' + str(self.course_group)
+        slug_value = self.name + '-' + str(self.course_group) + '-' + str(self.program)[:10]
+        print(slug_value)
         self.slug = slugify(slug_value)
         return super().save(*args, **kwargs)
+
     # except IntegrityError as e:
     #     raise ValidationError('something')
