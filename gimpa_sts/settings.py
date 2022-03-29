@@ -15,7 +15,6 @@ import django_heroku
 
 from pathlib import Path
 
-
 import environ
 # Initialise environment variables
 env = environ.Env()
