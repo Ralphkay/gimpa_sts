@@ -1,4 +1,4 @@
-from django.db.models import Q
+from django.db.models import Q, F
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView, ListView, DetailView, View
@@ -18,30 +18,24 @@ User = get_user_model()
 @login_required
 @allowed_groups(permitted_groups=['student'])
 def evaluations(request):
-    student = get_object_or_404(Student, user=request.user.id)
-    # user = User.objects.get(id=request.user.id)
-    # print("student =>", user, student)
-    # student = Student.objects.filter(user=request.user.id)
+    student = Student.objects.filter(user=request.user.id).get()
     courses_assigned_to_student_by_level = Course.objects.filter(program=student.program, level=student.level,
-                                                                 course_group=student.course_group)
+                                                                 course_group=student.course_group).values('id')
+
     evaluated_submissions = EvaluationSubmission.objects.filter(submitter=student).values_list('evaluationInfo')
-    evaluation_set = Evaluation.objects.filter(Q(course__in=courses_assigned_to_student_by_level))\
-        .exclude(id__in=evaluated_submissions)
-    #
-    # print(evaluation_set)
-    #
-    context = {'evaluations': evaluation_set, 'evaluated_submissions': evaluated_submissions, 'page_title':'Evaluations'}
-    print(request.user, student, courses_assigned_to_student_by_level)
+    evaluation_set = Evaluation.objects.filter(course__id__in=courses_assigned_to_student_by_level).\
+        exclude(id__in=evaluated_submissions)
+
+    context = {'evaluations': evaluation_set, 'page_title': 'Evaluations'}
     return render(request, 'evaluation_app/evaluations.html', context)
 
 
 @login_required
 @allowed_groups(permitted_groups=['student'])
 def evaluation_view_form(request, pk):
-    evaluation_instance = get_object_or_404(Evaluation, pk=pk)
-    student = get_object_or_404(Student, user=request.user)
-
-    evaluation_form = EvaluationForm(initial={'evaluationInfo': evaluation})
+    student = get_object_or_404(Student, user=request.user.id)
+    evaluation_instance = Evaluation.objects.filter(pk=pk).get()
+    evaluation_form = EvaluationForm(initial={'evaluationInfo': evaluation_instance})
 
     if request.method == 'POST':
         evaluation_form = EvaluationForm(request.POST, initial={'evaluationInfo': evaluation_instance,
@@ -53,7 +47,8 @@ def evaluation_view_form(request, pk):
             return redirect('evaluations')
         else:
             print(evaluation_form.errors)
-
+            evaluation_form = EvaluationForm(request.POST, initial={'evaluationInfo': evaluation_instance,
+                                                                    'submitter': request.user.id})
     context = {'evaluation': evaluation_instance, 'evaluation_form': evaluation_form}
     return render(request, 'evaluation_app/evaluation_form.html', context)
 

@@ -1,13 +1,9 @@
 import uuid
-import random
-
-from django.utils import timezone
-from django.db import IntegrityError
 from django.core.exceptions import ValidationError
-
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 from django.utils.text import slugify
 
 from accounts.models import Student
@@ -43,11 +39,11 @@ class Evaluation(models.Model):
             return False
 
     def __str__(self):
-        return f"{self.course.course_code} - {self.course.name}"
+        return f"{self.course.course_code} - {self.course.name} - {self.course.course_group.upper()[0:1]}- {self.course.program} "
 
     def save(self, *args, **kwargs):
-        slug_value = self.course.name + '-' + str(self.facilitator.staff_id)
-        self.slug = slugify(slug_value)
+        # slug_value = self.course.name + '-' + str(self.facilitator.staff_id) + '-' + self.course.course_group
+        # self.slug = slugify(slug_value)
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -116,8 +112,8 @@ class EvaluationSubmission(models.Model):
         return f"{self.evaluationInfo} {self.submitter}"
 
     def save(self, *args, **kwargs):
-        self.slug = str(self.evaluationInfo) + '-' + str(uuid.uuid4())
-        self.slug = slugify(self.slug[50:])
+        # self.slug = str(self.evaluationInfo) + '-' + str(uuid.uuid4())
+        # self.slug = slugify(self.slug[50:])
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -125,22 +121,6 @@ class EvaluationSubmission(models.Model):
 
     class Meta:
         unique_together = [('submitter', 'evaluationInfo')]
-
-
-# class EvaluationStatisticalResult(models.Model):
-#     evaluation = models.ForeignKey(Evaluation, on_delete=models.CASCADE)
-#     total_sum_curriculum_score = models.FloatField(null=False, blank=False, default=0)
-#     total_avg_curriculum_score = models.FloatField(null=False, blank=False, default=0)
-
-# # Signals
-# @receiver(post_save, sender=EvaluationSubmission)
-# def evaluation_created(sender, instance, created, *args, **kwargs):
-#     if created:
-#         EvaluationStatisticalResult.objects.create(evaluation=instance)
-#         print("Evaluation Submission form created successfully")
-#     else:
-#         print("Evaluation Submission form failed to create")
-#
 
 
 # Organisation Models
@@ -229,28 +209,29 @@ class Course(models.Model):
     description = models.TextField(blank=True, null=True)
 
     def __str__(self):
-        return self.name + " " + self.course_code + " (" + str(self.level) + ")" + '–' + self.course_group.upper()
+        return self.name + " " + self.course_code + " (" + str(self.level) + ")" + '–' + self.course_group.upper()[
+                                                                                         0:1] + '-' + str(self.program)
 
     def get_absolute_url(self):
         return reverse('view_course', kwargs={'slug': self.slug})
 
-    def clean(self):
-        exists = Course.objects.filter(name=self.name, level=self.level, course_group=self.course_group,
-                                       facilitator=self.facilitator)
-        slug_value = self.name + '-' + str(self.course_group) + '-' + str(uuid.uuid4())
-
-        # if exists:
-        #     raise ValidationError({'name': "Course with same specific details exists"})
+    # def clean(self):
+    #     exists = Course.objects.filter(name=self.name, level=self.level, course_group=self.course_group,
+    #                                    facilitator=self.facilitator)
+    #     # slug_value = self.name + '-' + str(self.course_group) + '-' + str(uuid.uuid4())
+    #
+    #     if exists:
+    #         raise ValidationError({'name': "Course with same specific details exists"})
 
     def save(self, *args, **kwargs):
         # try:
 
         count: int = 0
         self.full_clean()
-        slug_value = self.name + '-' + str(self.course_group) + '-' + str(self.program)[:10]
-        print(slug_value)
-        self.slug = slugify(slug_value)
+        # slug_value = self.name + '-' + str(self.course_group) + '-' + str(self.program)[:10]
+        # print(slug_value)
+        # self.slug = slugify(slug_value)
         return super().save(*args, **kwargs)
 
-    # except IntegrityError as e:
-    #     raise ValidationError('something')
+    class Meta:
+        unique_together = [('name', 'level','course_group', 'facilitator')]

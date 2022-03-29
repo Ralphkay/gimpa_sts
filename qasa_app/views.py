@@ -1,14 +1,15 @@
-from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views import View
+from django.db.models import Count, F, Avg, Sum, Max, Min, StdDev, Variance
+from django.shortcuts import render, get_object_or_404, redirect
+from django.core.mail import send_mail
 from django.contrib import messages
-from django.db.models import Count, Case, When, F, Avg, Sum, Max, Min, StdDev, Variance
+import requests
 
 from accounts.auth_decorators import allowed_groups
 from evaluation_app.models import Evaluation, EvaluationSubmission, School, Department, AcademicYear, Program, Course, \
     Facilitator
-
 # Create your views here.
+from gimpa_sts import settings
 from qasa_app.forms import AcademicYearForm, SchoolForm, CreateDepartmentForm, CreateProgramForm, CreateCourseForm, \
     SetupEvaluationForm, AddFacilitatorForm
 
@@ -45,7 +46,7 @@ def setup_evaluation(request):
             form.save()
             messages.success(request, f"Record saved successfully.")
             latest_course = Course.objects.latest('slug')
-            return redirect('view_schools')
+            return redirect('view_all_evaluations')
     context = {'form': form, 'page_title': 'Setup Evaluation'}
     return render(request, 'qasa_app/evaluation/setup_evaluation.html', context)
 
@@ -106,6 +107,7 @@ def evaluation_report(request, slug):
     evaluation = get_object_or_404(Evaluation, slug=slug)
     evaluation_submitted = Evaluation.objects.filter(slug=slug).annotate(
         submitted=Count(F('submitted_evaluations'))).get()
+
     e_curriculum_feedback_beginning_answer_stats = EvaluationSubmission.objects.filter(
         evaluationInfo=evaluation_submitted). \
         aggregate(Count(F('curriculum_feedback_beginning_answer')), Sum('curriculum_feedback_beginning_answer'),
@@ -486,22 +488,33 @@ def evaluation_report(request, slug):
         .aggregate((Avg('environment_avg_submission')))
 
     averaged_cum_stats = round(
-        float((cumulative_avg_stats['cumulative_avg_submission__avg']) / NUMBER_OF_CUMULATIVE_CHOICES), 2)
+        float((cumulative_avg_stats['cumulative_avg_submission__avg']) / NUMBER_OF_CUMULATIVE_CHOICES), 2) if (
+                                                                                                                  cumulative_avg_stats[
+                                                                                                                      'cumulative_avg_submission__avg']) is not None else 0
     averaged_attendance_stats = round(
-        float(attendance_avg_stats['attendance_avg_submission__avg']) / NUMBER_OF_ATTENDANCE_CHOICES, 2)
+        float(attendance_avg_stats['attendance_avg_submission__avg']) / NUMBER_OF_ATTENDANCE_CHOICES, 2) if (
+                                                                                                                attendance_avg_stats[
+                                                                                                                    'attendance_avg_submission__avg']) is not None else 0
     averaged_delivery_stats = round(
-        float(delivery_avg_stats['delivery_avg_submission__avg']) / NUMBER_OF_DELIVERY_CHOICES, 2)
+        float(delivery_avg_stats['delivery_avg_submission__avg']) / NUMBER_OF_DELIVERY_CHOICES, 2) if (
+                                                                                                          delivery_avg_stats[
+                                                                                                              'delivery_avg_submission__avg']) is not None else 0
     averaged_assignments_stats = round(
-        float(assignments_avg_stats['assignments_avg_submission__avg']) / NUMBER_OF_ASSIGNMENTS_CHOICES, 2)
+        float(assignments_avg_stats['assignments_avg_submission__avg']) / NUMBER_OF_ASSIGNMENTS_CHOICES, 2) if (
+                                                                                                                   assignments_avg_stats[
+                                                                                                                       'assignments_avg_submission__avg']) is not None else 0
 
     averaged_interaction_stats = round(
-        float(interaction_avg_stats['interaction_avg_submission__avg']) / NUMBER_OF_INTERACTION_CHOICES, 2)
+        float(interaction_avg_stats['interaction_avg_submission__avg']) / NUMBER_OF_INTERACTION_CHOICES, 2) if (
+                                                                                                                   interaction_avg_stats[
+                                                                                                                       'interaction_avg_submission__avg']) is not None else 0
     averaged_environment_stats = round(
-        float(environment_avg_stats['environment_avg_submission__avg']) / NUMBER_OF_ENVIRONMENT_CHOICES, 2)
-    total_score_cumulatively = (
-                                       averaged_cum_stats + averaged_attendance_stats + averaged_delivery_stats + averaged_assignments_stats + averaged_interaction_stats + averaged_environment_stats) / 5
-    print(total_score_cumulatively)
-
+        float(environment_avg_stats['environment_avg_submission__avg']) / NUMBER_OF_ENVIRONMENT_CHOICES, 2) if (
+                                                                                                                   environment_avg_stats[
+                                                                                                                       'environment_avg_submission__avg']) is not None else 0
+    total_score_cumulatively = round((
+                                             averaged_cum_stats + averaged_attendance_stats + averaged_delivery_stats + averaged_assignments_stats + averaged_interaction_stats) / 5,
+                                     2)
     context = {
         'evaluation': evaluation,
         'page_title': f"{evaluation_submitted} Report",
@@ -790,7 +803,7 @@ def create_course(request):
 
 @allowed_groups(permitted_groups=['qasa'])
 def edit_course(request, slug):
-    course = get_object_or_404(Course, slug=slug)
+    course = Course.objects.get(slug=slug)
     form = CreateCourseForm(instance=course)
     if request.method == 'POST':
         form = CreateCourseForm(request.POST, instance=course)
@@ -798,7 +811,7 @@ def edit_course(request, slug):
             form.save()
             messages.success(request, f"Record updated successfully.")
             return redirect('view_program', slug=course.program.slug)
-    context = {'form': form}
+    context = {'form': form, 'course': course}
     return render(request, 'qasa_app/course/edit_course.html', context)
 
 
@@ -856,3 +869,35 @@ def view_facilitators(request):
     facilitators = Facilitator.objects.all()
     context = {'facilitators': facilitators}
     return render(request, 'qasa_app/course/facilitators.html', context)
+
+
+def send_ux_email(request):
+    if request.method == 'POST':
+        send_simple_message()
+        # send_mail(
+        #     'Subject here',
+        #     'Here is the message.',
+        #     settings.EMAIL_HOST_USER,
+        #     [request.user.email],
+        #     fail_silently=False,
+        # )
+
+        messages.success(request, 'Message sent!')
+        return redirect('evaluations')
+    return None
+
+
+def send_simple_message():
+    return requests.post(
+        "https://api.mailgun.net/v3/sandboxabdcfdbf708c470296136ecfdf64ee27.mailgun.org/messages",
+        auth=("api", "6c7a86de276949decfc38f15b160a393-62916a6c-c1476a4d"),
+        data={"from": "Mailgun Sandbox <postmaster@sandboxabdcfdbf708c470296136ecfdf64ee27.mailgun.org>",
+              "to": "Raphael Amponsah <ralphvine2020@gmail.com>",
+              "subject": "Hello Raphael Amponsah",
+              "text": "Congratulations Raphael Amponsah, you just sent an email with Mailgun!  You are truly awesome!"}
+    )
+
+# You can see a record of this email in your logs: https://app.mailgun.com/app/logs.
+
+# You can send up to 300 emails/day from this sandbox server.
+# Next, you should add your own domain so you can send 10000 emails/month for free.

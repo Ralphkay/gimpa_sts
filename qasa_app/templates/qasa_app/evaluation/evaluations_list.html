@@ -99,7 +99,7 @@
 
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="{% url 'delete_evaluation' evaluation.id %}"
+                                                                <form action="{% url 'delete_evaluation' evaluation.slug %}"
                                                                       method="post">
                                                                     {% csrf_token %}
                                                                     <h5>Are you sure you want to
