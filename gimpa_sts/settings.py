@@ -14,7 +14,7 @@ import os
 import django_heroku
 
 from pathlib import Path
-from mailjet_rest import Client
+
 
 import environ
 # Initialise environment variables
@@ -189,7 +189,7 @@ EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 
-MAILJET = Client(auth=(env('API_KEY'), env('API_SECRET')), version='v3.1')
+
 # Activate Django-Heroku.
 # django_heroku.settings(locals())import django_heroku
 django_heroku.settings(locals())
