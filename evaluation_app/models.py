@@ -234,4 +234,4 @@ class Course(models.Model):
         return super().save(*args, **kwargs)
 
     class Meta:
-        unique_together = [('name', 'level','course_group', 'facilitator')]
+        unique_together = [('name', 'level','course_group', 'facilitator','program')]
