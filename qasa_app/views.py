@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.db.models import Count, F, Avg, Sum, Max, Min, StdDev, Variance
+from django.db.models import Count, F, Avg, Sum, Max, Min, StdDev, Variance, Func
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.mail import send_mail
 from django.contrib import messages
@@ -19,6 +19,11 @@ NUMBER_OF_DELIVERY_CHOICES = 9
 NUMBER_OF_ASSIGNMENTS_CHOICES = 9
 NUMBER_OF_INTERACTION_CHOICES = 3
 NUMBER_OF_ENVIRONMENT_CHOICES = 9
+
+
+class Round(Func):
+    function = 'ROUND'
+    template = '%(function)s(%(expressions)s, 2)'
 
 
 @allowed_groups(permitted_groups=['qasa'])
@@ -111,7 +116,7 @@ def evaluation_report(request, slug):
     e_curriculum_feedback_beginning_answer_stats = EvaluationSubmission.objects.filter(
         evaluationInfo=evaluation_submitted). \
         aggregate(Count(F('curriculum_feedback_beginning_answer')), Sum('curriculum_feedback_beginning_answer'),
-                  Avg('curriculum_feedback_beginning_answer'),
+                  Round(Avg('curriculum_feedback_beginning_answer'),2),
                   Max(F('curriculum_feedback_beginning_answer')), Min(F('curriculum_feedback_beginning_answer')),
                   StdDev(F('curriculum_feedback_beginning_answer')),
                   Variance(F('curriculum_feedback_beginning_answer')),

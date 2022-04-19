@@ -14,7 +14,6 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
-
 def register_student(request):
     form = StudentRegisterForm()
 
@@ -56,8 +55,8 @@ def student_profile_create(request, pk):
 def login_qadmin(request):
     page_title = 'Admin Login/Register'
     context = {'page_title': page_title,
-               'bg':'bg-dark',
-               'admin':True
+               'bg': 'bg-dark',
+               'admin': True
                }
 
     if request.method == "POST":
