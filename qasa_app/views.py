@@ -116,10 +116,10 @@ def evaluation_report(request, slug):
     e_curriculum_feedback_beginning_answer_stats = EvaluationSubmission.objects.filter(
         evaluationInfo=evaluation_submitted). \
         aggregate(Count(F('curriculum_feedback_beginning_answer')), Sum('curriculum_feedback_beginning_answer'),
-                  Round(Avg('curriculum_feedback_beginning_answer')),
+                  Avg('curriculum_feedback_beginning_answer'),
                   Max(F('curriculum_feedback_beginning_answer')), Min(F('curriculum_feedback_beginning_answer')),
-                  Round(StdDev(F('curriculum_feedback_beginning_answer'))),
-                  Round(Variance(F('curriculum_feedback_beginning_answer'))),
+                  StdDev(F('curriculum_feedback_beginning_answer')),
+                  Variance(F('curriculum_feedback_beginning_answer')),
                   )
 
     e_curriculum_feedback_course_answer_stats = EvaluationSubmission.objects.filter(
