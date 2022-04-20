@@ -21,9 +21,9 @@ NUMBER_OF_INTERACTION_CHOICES = 3
 NUMBER_OF_ENVIRONMENT_CHOICES = 9
 
 
-class Round(Func):
-    function = 'ROUND'
-    template = '%(function)s(%(expressions)s, 2)'
+# class Round(Func):
+#     function = 'ROUND'
+#     template = '%(function)s(%(expressions)s, 2)'
 
 
 @allowed_groups(permitted_groups=['qasa'])
