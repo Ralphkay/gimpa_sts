@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'evaluation_app',
     'qasa_app',
     'pages_app'
+    'emailsystem'
 
 ]
 
