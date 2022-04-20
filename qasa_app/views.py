@@ -29,7 +29,7 @@ NUMBER_OF_ENVIRONMENT_CHOICES = 9
 @allowed_groups(permitted_groups=['qasa'])
 def analytic_dashboard(request):
     context = {
-        'page_title': 'Analytic Dashboard',
+        'page_title': 'EV Analytic Dashboard',
     }
     return render(request, 'qasa_app/analysis/analytic_dashboard.html', context)
 
